@@ -1,0 +1,13 @@
+# PyTorch and CUDA are provided by the school GPU image.
+# Do not install another torch build here unless compatibility has been verified.
+numpy>=2.0
+pandas>=2.2
+scipy>=1.13
+scikit-learn>=1.5
+matplotlib>=3.9
+seaborn>=0.13
+PyYAML>=6.0
+tqdm>=4.66
+jupyterlab>=4.2
+ipykernel>=6.29
+pytest>=8.3
