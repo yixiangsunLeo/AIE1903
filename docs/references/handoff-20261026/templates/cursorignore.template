@@ -1,0 +1,17 @@
+# 审计后合并到项目.cursorignore，不改全局配置。
+# 不能阻止终端/MCP读取；仍需遵守数据使用和秘密处理约定。
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.*.example
+**/*.pem
+**/*.key
+**/credentials.json
+**/secrets.json
+.venv/
+.cache/
+data/raw/
+data/processed/
+runs/
+artifacts/models/
+# 不排除AGENTS.md、CLAUDE.md、.cursor/rules或docs/current-status.md

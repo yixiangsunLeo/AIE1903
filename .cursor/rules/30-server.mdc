@@ -1,0 +1,29 @@
+---
+description: 学校服务器持久化、资源预算与进程管理
+globs: scripts/**,configs/**,src/**/*.py,pyproject.toml,requirements.lock,.githooks/**
+paths: scripts/**,configs/**,src/**/*.py,pyproject.toml,requirements.lock,.githooks/**
+alwaysApply: false
+---
+
+# 服务器与运行规则
+
+依据：docs/runbooks/environment.md、docs/runbooks/sync-backup-release.md、configs/runtime.yaml。
+
+**资源与预算**
+- 2026-10-26 实测：容器配额为 24 核、32 GiB 内存、一张 RTX 5090（32 GiB）。os.cpu_count() 显示的 256 是宿主机的值，不是可用核数。
+- 设备、线程数、并行数、时长、内存预算都来自 configs/runtime.yaml，并且要真正传进代码（OMP、MKL、OPENBLAS 和 torch 的线程设置）。默认是 CPU、8 线程、单任务。
+- 只有任务卡里写明了预算，才能使用 GPU。不要占满所有核，不要在后台无限重试。
+- 不要一次性展开"全部滑窗 × 序列 × 289 步 × 滞后"的大张量；分批处理，并记录内存占用。
+
+**环境**
+- 只用项目 .venv（带 --system-site-packages，复用镜像里的 numpy、pandas、torch）。不改系统 Python、CUDA 或全局配置。
+- 新增依赖时，写入 pyproject.toml 和 requirements.lock，并说明原因。
+
+**持久化与进程**
+- 代码、数据、记录和运行产物只放在 /ai/workspace/AIE1903。容器根盘（/root、/tmp、/workspace）随时可能消失。
+- 长任务要记录 run_id、PID 或作业号、启动命令和日志路径。重连后先查看状态，不要重复启动。
+- 不结束归属不明的进程。释放环境前，按 docs/runbooks/sync-backup-release.md 保存镜像、同步并备份。
+
+**秘密与数据**
+- 不打印全部环境变量、密钥或 VPN、SSH 口令。
+- 不把原始数据发送给外部模型或服务。

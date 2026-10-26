@@ -1,49 +1,28 @@
-# CLAUDE.md — AIE1903 operator instructions
+@AGENTS.md
+@SOUL.md
 
-You are assisting on the CUHK-SZ School of AI **AIE1903** course project (wireless uplink traffic forecasting). Drive work so the student can reproduce, validate fairly, and explain results. Record AI vs teammate contributions honestly.
+# Claude Code 入口（AIE1903）
 
-## Environment & access
+上面导入的两个文件分别是共享约定和项目之魂。本文件只补充 Claude Code 专属的事项，保持简短，不另写一套项目事实。
 
-1. Campus VPN on the shared box: `~/.local/bin/cuhksz-vpn-{up,status,down}` (flaky — restart then retry SSH).
-2. AI platform UI proxy: `http://127.0.0.1:18080/` → cluster.
-3. SSH helper: `/home/box/.local/bin/aie1903-ssh` (password from private `aie1903-env.env` — **never print the password**).
-4. Current pattern: `root@10.27.126.1 -p <dynamic>` via the helper.
-5. **NEVER** use research SSH host `10.27.126.205` for this course.
-6. Claude Code runs on the **box** with CC Switch: `ANTHROPIC_BASE_URL=http://127.0.0.1:15721`. Prefer `--model claude-opus-5` (maps to gpt-6.1-sol). Remote has no Claude/node — edit remote via `aie1903-ssh` / scp.
-7. Env name `111`, image `jr1903:0.0.1`, mount volume **sun** at `/ai/workspace`.
+## 开工
 
-## Persistence (non-negotiable)
+- 先运行 `/context`，确认 Memory files 里有本文件、AGENTS.md 和 SOUL.md；缺任何一个就停下并报告，不要继续修改。
+- 读完 `docs/current-status.md` 和当前任务卡再动手，不凭聊天记忆判断版本。
+- 修改 src/、tests/、configs/、scripts/、notebooks/ 时，`.claude/rules/` 下的路径规则会自动加载。这些规则通过符号链接与 `.cursor/rules/` 共用同一份源文件。
+- 同一工作树只允许一个写入者：开工前检查并写入 `.agent-lock`，结束时删除（docs/agent-contract.md §1）。
 
-- Project root: **`/ai/workspace/AIE1903`**.
-- All durable state (code, data, `.git`, `.cursor`, `CLAUDE.md`, keys, meaningful runs) **only** under `/ai/workspace`.
-- Ignore NFS junk files named `.!!!*`. Do not delete the whole disk; work inside `AIE1903`.
+## 运行方式
 
-## Problem constraints
+- 访问方式和运行模式见 `docs/runbooks/environment.md`。现行模式是：Claude Code 跑在管理端 box 上，经 CC Switch 调用模型；学校环境没有 node 和 claude，通过 `aie1903-ssh` 在学校环境执行命令。
+- 项目命令一律在学校环境的项目根执行：`cd /ai/workspace/AIE1903 && …`；Python 用 `.venv/bin/python`。
+- 绝不打印 `aie1903-env.env` 中的密码。
 
-- Mainline: **cell_217**. Dry-run: **cell_30**. Extend to **grid_273** only after mainline.
-- Train 1728 rows (6 days); test **289** steps; day cycle **288**.
-- **No future leakage**: no test labels; features only from information available before each timestamp.
-- Official metrics (lower better): MAE, RMSE, MAPE, Masked MAPE @ 3e5, Masked MAPE @ 1e6.
-- Baseline: seasonal-naive daily cycle — `train[-288 + (h % 288)]` for horizon `h`.
-- Validation: `configs/validation-plan.json` (chronological holdouts inside train).
+## 非交互调用（Grokbot）
 
-## GitHub
+- 用 `claude -p` 调用时，提示词里必须写明 task_id、预算和验收标准；执行结果要回写到任务卡和 worklog。
+- 不使用会跳过权限检查或绕过项目指令的启动参数。
 
-- Key path: `/ai/workspace/.ssh/id_ed25519_github` (+ `config` Host github.com).
-- **Ask the user** before adding the public key to GitHub or pushing.
-- Do not commit secrets, private keys, or large raw CSVs (see `.gitignore`).
+## 收尾
 
-## After each batch / before release
-
-1. Commit on persistent disk.
-2. Sync GitHub when allowed.
-3. Before **释放** env: save image (**保存镜像**) + confirm disk sync (+ GitHub), then release.
-
-## Useful commands
-
-```bash
-/home/box/.local/bin/aie1903-ssh 'cd /ai/workspace/AIE1903 && python3 scripts/smoke_import.py'
-/home/box/.local/bin/aie1903-ssh 'cd /ai/workspace/AIE1903 && PYTHONPATH=src python3 scripts/audit_data.py'
-```
-
-See `README.md` and `docs/SYNC.md`.
+按 AGENTS.md 的"每项任务的必做事项"更新记录。提交时 hooks 会检查提交信息和禁止入库的文件；推送需要用户授权。

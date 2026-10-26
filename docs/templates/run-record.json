@@ -1,0 +1,75 @@
+{
+  "record_kind": "template_not_an_executed_run",
+  "schema_version": 1,
+  "run_id": null,
+  "task_id": null,
+  "actor": null,
+  "kind": null,
+  "status": "running",
+  "started_at": null,
+  "finished_at": null,
+  "exit_code": null,
+  "command": null,
+  "pid": null,
+  "code": {
+    "commit": null,
+    "git_dirty": null,
+    "diff_sha256": null,
+    "package_version": null
+  },
+  "data": {
+    "dataset_id": null,
+    "contract_version": null,
+    "files": []
+  },
+  "config": {
+    "resolved_path": null,
+    "sha256": null,
+    "seed": null,
+    "validation_protocol_id": null,
+    "folds": [],
+    "heldout_used": false
+  },
+  "environment": {
+    "snapshot_path": null,
+    "python": null,
+    "key_packages": {},
+    "device": null,
+    "threads": null
+  },
+  "model": {
+    "name": null,
+    "params": {},
+    "training_loss": null,
+    "training_loss_scale": null
+  },
+  "metric_definition_version": null,
+  "fold_results": [
+    {
+      "fold_id": null,
+      "fit_range": [null, null],
+      "forecast_range": [null, null],
+      "metrics": {
+        "mae": {"value": null, "count": null},
+        "rmse": {"value": null, "count": null},
+        "mape": {"value": null, "count": null},
+        "masked_mape_t1": {"value": null, "count": null, "threshold": null},
+        "masked_mape_t2": {"value": null, "count": null, "threshold": null}
+      },
+      "scale": "raw_counts"
+    }
+  ],
+  "cost": {
+    "wall_time_seconds": null,
+    "peak_rss_bytes": null,
+    "peak_gpu_memory_bytes": null,
+    "measurement_notes": null
+  },
+  "artifacts": [],
+  "leakage_checks": [],
+  "conclusion": null,
+  "failure_reason": null,
+  "next_action": null,
+  "ai_contribution": null,
+  "human_review_status": "pending"
+}

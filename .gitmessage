@@ -1,0 +1,13 @@
+
+# <type>(<scope>): <summary, <=72 chars, English preferred>
+#   type : feat fix refactor perf test docs chore build exp data revert
+#   scope: config data splits features models evaluation tracking pipelines viz cli
+#          configs rules records env repo
+#
+# Body: why, what changed, how it was verified (command + result).
+#
+# Required trailers (checked by .githooks/commit-msg):
+# Task: T-YYYYMMDD-NN            (or "Task: trivial" for typo-level fixes)
+# Actor: cursor/<model> | claude-code/<model> | grokbot+claude-code/<model> | human/<name>
+# Optional: Co-authored-by: ...
+# Rules: docs/standards/git-workflow.md

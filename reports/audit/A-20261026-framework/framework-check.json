@@ -1,0 +1,751 @@
+{
+ "checks": [
+  {
+   "check": "exists:AGENTS.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:CLAUDE.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:SOUL.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:CHANGELOG.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:pyproject.toml",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:requirements.lock",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.gitignore",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.gitattributes",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.editorconfig",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.env.example",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.gitmessage",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.githooks/commit-msg",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.githooks/pre-commit",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.cursor/rules/00-project.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.cursor/rules/10-forecasting.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.cursor/rules/20-records.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.cursor/rules/30-server.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.cursor/rules/40-code-structure.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:.cursor/rules/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:configs/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:configs/datasets.yaml",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:configs/validation-plan.json",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:configs/runtime.yaml",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:configs/experiments/_template.yaml",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:data/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:data/checksums.sha256",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/project-context.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/agent-contract.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/architecture.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/roadmap.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/current-status.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/sources-and-open-questions.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/ai-use-log.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/standards/coding.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/standards/git-workflow.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/standards/records.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/runbooks/environment.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/runbooks/sync-backup-release.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/runbooks/grokbot.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/tasks/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/decisions/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/templates/task-card.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/templates/adr.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/templates/run-record.json",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:docs/worklog/2026-10.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:reports/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:reports/experiments.csv",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:runs/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:submissions/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:scripts/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:notebooks/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:tests/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:tests/test_layout.py",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "exists:src/aie1903/__init__.py",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "area:config",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "area:data",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "area:splits",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "area:features",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "area:models",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "area:evaluation",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "area:tracking",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "area:pipelines",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "area:viz",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_frontmatter:00-project.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_length<=60:00-project.mdc",
+   "ok": true,
+   "detail": "25 lines"
+  },
+  {
+   "check": "rule_frontmatter:10-forecasting.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_length<=60:10-forecasting.mdc",
+   "ok": true,
+   "detail": "30 lines"
+  },
+  {
+   "check": "rule_globs_equal_paths:10-forecasting.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_glob_matches:10-forecasting.mdc:src/**/*.py",
+   "ok": true,
+   "detail": "10 paths"
+  },
+  {
+   "check": "rule_glob_matches:10-forecasting.mdc:tests/**/*.py",
+   "ok": true,
+   "detail": "1 paths"
+  },
+  {
+   "check": "rule_glob_matches:10-forecasting.mdc:configs/**",
+   "ok": true,
+   "detail": "7 paths"
+  },
+  {
+   "check": "rule_glob_matches:10-forecasting.mdc:notebooks/**",
+   "ok": true,
+   "detail": "2 paths"
+  },
+  {
+   "check": "claude_symlink:10-forecasting",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_frontmatter:20-records.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_length<=60:20-records.mdc",
+   "ok": true,
+   "detail": "27 lines"
+  },
+  {
+   "check": "rule_frontmatter:30-server.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_length<=60:30-server.mdc",
+   "ok": true,
+   "detail": "29 lines"
+  },
+  {
+   "check": "rule_globs_equal_paths:30-server.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_glob_matches:30-server.mdc:scripts/**",
+   "ok": true,
+   "detail": "2 paths"
+  },
+  {
+   "check": "rule_glob_matches:30-server.mdc:configs/**",
+   "ok": true,
+   "detail": "7 paths"
+  },
+  {
+   "check": "rule_glob_matches:30-server.mdc:src/**/*.py",
+   "ok": true,
+   "detail": "10 paths"
+  },
+  {
+   "check": "rule_glob_matches:30-server.mdc:pyproject.toml",
+   "ok": true,
+   "detail": "1 paths"
+  },
+  {
+   "check": "rule_glob_matches:30-server.mdc:requirements.lock",
+   "ok": true,
+   "detail": "1 paths"
+  },
+  {
+   "check": "rule_glob_matches:30-server.mdc:.githooks/**",
+   "ok": true,
+   "detail": "3 paths"
+  },
+  {
+   "check": "claude_symlink:30-server",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_frontmatter:40-code-structure.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_length<=60:40-code-structure.mdc",
+   "ok": true,
+   "detail": "32 lines"
+  },
+  {
+   "check": "rule_globs_equal_paths:40-code-structure.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rule_glob_matches:40-code-structure.mdc:src/**/*.py",
+   "ok": true,
+   "detail": "10 paths"
+  },
+  {
+   "check": "rule_glob_matches:40-code-structure.mdc:tests/**/*.py",
+   "ok": true,
+   "detail": "1 paths"
+  },
+  {
+   "check": "rule_glob_matches:40-code-structure.mdc:scripts/**",
+   "ok": true,
+   "detail": "2 paths"
+  },
+  {
+   "check": "rule_glob_matches:40-code-structure.mdc:notebooks/**",
+   "ok": true,
+   "detail": "2 paths"
+  },
+  {
+   "check": "claude_symlink:40-code-structure",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "claude_imports_present",
+   "ok": true,
+   "detail": "['AGENTS.md', 'SOUL.md']"
+  },
+  {
+   "check": "claude_import_resolves:AGENTS.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "claude_import_resolves:SOUL.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "markdown_path_references_exist",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "config_parse:runtime",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "protocol_id_consistent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "folds_289_each",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "folds_non_overlapping_expanding",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "folds_origin_equals_fit_end",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "heldout_ends_at_1728",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "heldout_untouched",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:cell_217:train",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:cell_217:test",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:cell_217:sample_submission",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:cell_217:description",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:cell_30:train",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:cell_30:test",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:cell_30:sample_submission",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:cell_30:description",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:grid_273:train",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:grid_273:test",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:grid_273:sample_submission",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:grid_273:membership",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "registry_file:grid_273:description",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "checksums_cover_registry_exactly",
+   "ok": true,
+   "detail": "13 checksum entries"
+  },
+  {
+   "check": "hooks_enabled",
+   "ok": true,
+   "detail": ".githooks"
+  },
+  {
+   "check": "hook_executable:commit-msg",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "hook_executable:pre-commit",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "commit_template_set",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:data/raw/cell_217/cell_217_train.csv",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:data/raw/cell_217/data_description_for_cell_217.pdf",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:runs/R-x/run.json",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:submissions/cell_217/R-x.csv",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:.venv/bin/python",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:.agent-lock",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:.env",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:logs/a.log",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:backups/x.tar.gz",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:artifacts/models/m.pt",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:docs/.!!!junk.pdf",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "ignored:.cursor/plans/x.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:AGENTS.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:SOUL.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:.cursor/rules/00-project.mdc",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:.claude/rules/10-forecasting.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:data/checksums.sha256",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:data/raw/.gitkeep",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:runs/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:submissions/README.md",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:submissions/cell_217/R-x.json",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:reports/runs/.gitkeep",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:reports/experiments.csv",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "not_ignored:.env.example",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "no_raw_data_tracked",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "passed": 149,
+ "failed": 0
+}

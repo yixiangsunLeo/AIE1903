@@ -1,0 +1,11 @@
+@AGENTS.md
+
+## Claude Code 工作入口
+
+先读取 docs/project-context.md、docs/agent-contract.md、docs/current-status.md 与当前任务卡，再开始修改。
+
+从实际项目根使用 README 中已验证的命令；参数、设备和预算服从实际配置。
+
+遵守共享约定，记录改动、运行、失败与交接状态。不要仅依赖聊天记忆；不要假设 Cursor 的 .mdc 文件会被本工具自动加载。
+
+本文件保持简短；共同行为改动同步到共享约定，不复制出另一套项目事实。

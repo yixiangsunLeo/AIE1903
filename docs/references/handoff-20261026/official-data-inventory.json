@@ -1,0 +1,180 @@
+{
+  "snapshot_date": "2026-10-26",
+  "snapshot_timezone": "Asia/Shanghai",
+  "status": "official_reference_snapshot_not_a_server_audit",
+  "repository": "https://github.com/AIE1903-DataCompetition-26AY/competition-data",
+  "reference": "main_at_fetch_time",
+  "hash_note": "git_blob_sha1_identifies_a_git_blob_not_plain_file_sha256; calculate_local_sha256_on_server",
+  "training_rows": 1728,
+  "test_rows": 289,
+  "sampling_interval_minutes": 5,
+  "seasonal_period_steps": 288,
+  "datasets": [
+    {
+      "id": "cell_30",
+      "level": "beginner",
+      "n": 30,
+      "prefix": "Cell",
+      "train": "cell_30_train.csv",
+      "test": "cell_30_test.csv",
+      "sample": "cell_30_sample_submission.csv",
+      "train_start": "2024-11-30 23:50:00",
+      "train_end": "2024-12-06 23:45:00",
+      "test_start": "2024-12-06 23:50:00",
+      "test_end": "2024-12-07 23:50:00",
+      "thresholds": [
+        300000,
+        1000000
+      ],
+      "column_count_including_timestamp": 31,
+      "training_values": 51840,
+      "prediction_values": 8670,
+      "timestamp_timezone": "unspecified_collection_clock",
+      "test_labels_public": false,
+      "grid_mape_excludes_true_zeros": false,
+      "files": [
+        {
+          "name": "cell_30_sample_submission.csv",
+          "bytes": 71669,
+          "git_blob_sha1": "8988da9142b6c9687d3fdf1889152e4424df3e5c",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/cell_30/cell_30_sample_submission.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/cell_30/cell_30_sample_submission.csv"
+        },
+        {
+          "name": "cell_30_test.csv",
+          "bytes": 15020,
+          "git_blob_sha1": "1a07570ec64501306d017a7823240a7ddb19df00",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/cell_30/cell_30_test.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/cell_30/cell_30_test.csv"
+        },
+        {
+          "name": "cell_30_train.csv",
+          "bytes": 426220,
+          "git_blob_sha1": "26b0552be2c1351038df6f7bf06781a872e2f36e",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/cell_30/cell_30_train.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/cell_30/cell_30_train.csv"
+        },
+        {
+          "name": "data_description_for_cell_grid.pdf",
+          "bytes": 227297,
+          "git_blob_sha1": "8df5a69391e564afb1b3fdde9fe32244d7a5b1c0",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/cell_30/data_description_for_cell_grid.pdf",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/cell_30/data_description_for_cell_grid.pdf"
+        }
+      ]
+    },
+    {
+      "id": "cell_217",
+      "level": "intermediate",
+      "n": 217,
+      "prefix": "Cell",
+      "train": "cell_217_train.csv",
+      "test": "cell_217_test.csv",
+      "sample": "cell_217_sample_submission.csv",
+      "train_start": "2024-11-30 23:00:00",
+      "train_end": "2024-12-06 22:55:00",
+      "test_start": "2024-12-06 23:00:00",
+      "test_end": "2024-12-07 23:00:00",
+      "thresholds": [
+        300000,
+        1000000
+      ],
+      "column_count_including_timestamp": 218,
+      "training_values": 374976,
+      "prediction_values": 62713,
+      "timestamp_timezone": "unspecified_collection_clock",
+      "test_labels_public": false,
+      "grid_mape_excludes_true_zeros": false,
+      "files": [
+        {
+          "name": "cell_217_sample_submission.csv",
+          "bytes": 454503,
+          "git_blob_sha1": "c188e03ee113a4dda2a1e3df53620ca44e25be6e",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/cell_217/cell_217_sample_submission.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/cell_217/cell_217_sample_submission.csv"
+        },
+        {
+          "name": "cell_217_test.csv",
+          "bytes": 70746,
+          "git_blob_sha1": "f687e21cc72b7cf0c675296799120e3e5470ce8b",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/cell_217/cell_217_test.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/cell_217/cell_217_test.csv"
+        },
+        {
+          "name": "cell_217_train.csv",
+          "bytes": 2702241,
+          "git_blob_sha1": "a72df10cbdbd90faf875cffa40886679d01f8ed8",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/cell_217/cell_217_train.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/cell_217/cell_217_train.csv"
+        },
+        {
+          "name": "data_description_for_cell_217.pdf",
+          "bytes": 215218,
+          "git_blob_sha1": "64b031f85ae80f7c9cf8821898a2b4ac8dc4fc69",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/cell_217/data_description_for_cell_217.pdf",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/cell_217/data_description_for_cell_217.pdf"
+        }
+      ]
+    },
+    {
+      "id": "grid_273",
+      "level": "advanced",
+      "n": 273,
+      "prefix": "Grid",
+      "train": "grid_train.csv",
+      "test": "grid_test.csv",
+      "sample": "grid_sample_submission.csv",
+      "train_start": "2024-11-30 23:50:00",
+      "train_end": "2024-12-06 23:45:00",
+      "test_start": "2024-12-06 23:50:00",
+      "test_end": "2024-12-07 23:50:00",
+      "thresholds": [
+        10000,
+        100000
+      ],
+      "column_count_including_timestamp": 274,
+      "training_values": 471744,
+      "prediction_values": 78897,
+      "timestamp_timezone": "unspecified_collection_clock",
+      "test_labels_public": false,
+      "grid_mape_excludes_true_zeros": true,
+      "files": [
+        {
+          "name": "data_description_for_cell_grid.pdf",
+          "bytes": 227297,
+          "git_blob_sha1": "8df5a69391e564afb1b3fdde9fe32244d7a5b1c0",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/grid_273/data_description_for_cell_grid.pdf",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/grid_273/data_description_for_cell_grid.pdf"
+        },
+        {
+          "name": "grid_cell_membership.csv",
+          "bytes": 5773,
+          "git_blob_sha1": "a3d469f424950d022c4a383386c804a9d70a43aa",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/grid_273/grid_cell_membership.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/grid_273/grid_cell_membership.csv"
+        },
+        {
+          "name": "grid_sample_submission.csv",
+          "bytes": 432404,
+          "git_blob_sha1": "d454ff84359bec0b19b3e12653d12cfbb50c9594",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/grid_273/grid_sample_submission.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/grid_273/grid_sample_submission.csv"
+        },
+        {
+          "name": "grid_test.csv",
+          "bytes": 87434,
+          "git_blob_sha1": "f3223357fdd444676b28858a2f5a11bec6c83666",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/grid_273/grid_test.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/grid_273/grid_test.csv"
+        },
+        {
+          "name": "grid_train.csv",
+          "bytes": 2564179,
+          "git_blob_sha1": "d07ec8d2c5a5a630043e5c7644ef2532ab7708c6",
+          "source_url": "https://github.com/AIE1903-DataCompetition-26AY/competition-data/blob/main/grid_273/grid_train.csv",
+          "raw_download_url": "https://raw.githubusercontent.com/AIE1903-DataCompetition-26AY/competition-data/main/grid_273/grid_train.csv"
+        }
+      ]
+    }
+  ]
+}

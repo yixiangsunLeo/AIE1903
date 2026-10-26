@@ -1,0 +1,943 @@
+{
+  "audit_id": "A-20261026-framework",
+  "task_id": "T-20261026-01",
+  "generated_at": "2026-10-26T21:41:14+08:00",
+  "official_source": {
+    "repository": "https://github.com/AIE1903-DataCompetition-26AY/competition-data",
+    "commit": "49822d82552c980bb83eb445548268f3565882ef"
+  },
+  "datasets": {
+    "cell_217": {
+      "files": {
+        "train": {
+          "name": "cell_217_train.csv",
+          "bytes": 2702241,
+          "sha256": "619d3b3cf92341b534169c07151bf4fad8719490bad6b14f665b31f0e651f727",
+          "git_blob_sha1": "a72df10cbdbd90faf875cffa40886679d01f8ed8"
+        },
+        "test": {
+          "name": "cell_217_test.csv",
+          "bytes": 70746,
+          "sha256": "2a8405bf16489c24125c07783b900d1f961178b5839f5d1d49fc32fe1f97a198",
+          "git_blob_sha1": "f687e21cc72b7cf0c675296799120e3e5470ce8b"
+        },
+        "sample": {
+          "name": "cell_217_sample_submission.csv",
+          "bytes": 454503,
+          "sha256": "8aca7d156fd8112ce78d0155c3ae3fdf57018ad03394d2a38b503e22a9e5b03f",
+          "git_blob_sha1": "c188e03ee113a4dda2a1e3df53620ca44e25be6e"
+        },
+        "description": {
+          "name": "data_description_for_cell_217.pdf",
+          "bytes": 215218,
+          "sha256": "c5520b06e4dd02d105efbda1d5276c6d10db8aaf9dbb3faf19d7612ba714debd",
+          "git_blob_sha1": "64b031f85ae80f7c9cf8821898a2b4ac8dc4fc69"
+        }
+      },
+      "checks": [
+        {
+          "check": "file.train.exists",
+          "status": "PASS",
+          "detail": "data/raw/cell_217/cell_217_train.csv"
+        },
+        {
+          "check": "file.test.exists",
+          "status": "PASS",
+          "detail": "data/raw/cell_217/cell_217_test.csv"
+        },
+        {
+          "check": "file.sample.exists",
+          "status": "PASS",
+          "detail": "data/raw/cell_217/cell_217_sample_submission.csv"
+        },
+        {
+          "check": "file.description.exists",
+          "status": "PASS",
+          "detail": "data/raw/cell_217/data_description_for_cell_217.pdf"
+        },
+        {
+          "check": "folder.no_unexpected_files",
+          "status": "PASS",
+          "detail": []
+        },
+        {
+          "check": "train.columns_exact_order",
+          "status": "PASS",
+          "detail": "n_columns=218 expected=218"
+        },
+        {
+          "check": "test.columns_exact_order",
+          "status": "PASS",
+          "detail": "n_columns=218 expected=218"
+        },
+        {
+          "check": "sample.columns_exact_order",
+          "status": "PASS",
+          "detail": "n_columns=218 expected=218"
+        },
+        {
+          "check": "train.rows",
+          "status": "PASS",
+          "detail": 1728
+        },
+        {
+          "check": "test.rows",
+          "status": "PASS",
+          "detail": 289
+        },
+        {
+          "check": "sample.rows",
+          "status": "PASS",
+          "detail": 289
+        },
+        {
+          "check": "train.timestamp_format",
+          "status": "PASS",
+          "detail": "%Y-%m-%d %H:%M:%S"
+        },
+        {
+          "check": "train.timestamp_tz_naive",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.timestamp_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.timestamp_increasing",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.timestamp_regular_5min",
+          "status": "PASS",
+          "detail": "distinct_steps=['0 days 00:05:00']"
+        },
+        {
+          "check": "test.timestamp_format",
+          "status": "PASS",
+          "detail": "%Y-%m-%d %H:%M:%S"
+        },
+        {
+          "check": "test.timestamp_tz_naive",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "test.timestamp_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "test.timestamp_increasing",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "test.timestamp_regular_5min",
+          "status": "PASS",
+          "detail": "distinct_steps=['0 days 00:05:00']"
+        },
+        {
+          "check": "sample.timestamp_format",
+          "status": "PASS",
+          "detail": "%Y-%m-%d %H:%M:%S"
+        },
+        {
+          "check": "sample.timestamp_tz_naive",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.timestamp_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.timestamp_increasing",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.timestamp_regular_5min",
+          "status": "PASS",
+          "detail": "distinct_steps=['0 days 00:05:00']"
+        },
+        {
+          "check": "train.start",
+          "status": "PASS",
+          "detail": "2024-11-30 23:00:00"
+        },
+        {
+          "check": "train.end",
+          "status": "PASS",
+          "detail": "2024-12-06 22:55:00"
+        },
+        {
+          "check": "test.start",
+          "status": "PASS",
+          "detail": "2024-12-06 23:00:00"
+        },
+        {
+          "check": "test.end",
+          "status": "PASS",
+          "detail": "2024-12-07 23:00:00"
+        },
+        {
+          "check": "train_test.contiguous",
+          "status": "PASS",
+          "detail": "0 days 00:05:00"
+        },
+        {
+          "check": "sample.timestamps_equal_test",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_numeric",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_no_nan",
+          "status": "PASS",
+          "detail": 0
+        },
+        {
+          "check": "train.values_finite",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_integer",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_non_negative",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_min_contract",
+          "status": "PASS",
+          "detail": "min=1 contract_min=1"
+        },
+        {
+          "check": "train.no_zero_values_for_cells",
+          "status": "PASS",
+          "detail": 0
+        },
+        {
+          "check": "test.values_all_empty",
+          "status": "PASS",
+          "detail": "non_empty_cells=0"
+        },
+        {
+          "check": "sample.values_finite",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.values_non_negative",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.is_seasonal_naive_reference_not_labels",
+          "status": "INFO",
+          "detail": {
+            "definition": "cyclic[h] = train[1728 - 288 + (h % 288)], h = 0..288",
+            "rows_0_287_equal": true,
+            "row_288_equal_cyclic": true,
+            "train_row_indices_equal_to_sample_row_288": [
+              1440
+            ],
+            "row_288_columns_whose_value_never_occurs_in_train_column": 0,
+            "row_288_median_rel_diff_pct_vs_train_1727": 40.95576275377816,
+            "row_288_median_rel_diff_pct_vs_train_1440": 0.0,
+            "train_typical_adjacent_step_rel_change_pct": 24.297672751470035
+          }
+        }
+      ],
+      "stats": {
+        "train": {
+          "shape": [
+            1728,
+            218
+          ],
+          "n_values": 374976,
+          "min": 1.0,
+          "max": 28952520.0,
+          "median": 469928.5,
+          "mean": 911911.2478478623,
+          "zero_count": 0,
+          "count_ge_thresholds": {
+            "10000.0": 370637,
+            "100000.0": 316300,
+            "300000.0": 234833,
+            "1000000.0": 101426
+          }
+        },
+        "sample_vs_seasonal_naive": {
+          "definition": "cyclic[h] = train[1728 - 288 + (h % 288)], h = 0..288",
+          "rows_0_287_equal": true,
+          "row_288_equal_cyclic": true,
+          "train_row_indices_equal_to_sample_row_288": [
+            1440
+          ],
+          "row_288_columns_whose_value_never_occurs_in_train_column": 0,
+          "row_288_median_rel_diff_pct_vs_train_1727": 40.95576275377816,
+          "row_288_median_rel_diff_pct_vs_train_1440": 0.0,
+          "train_typical_adjacent_step_rel_change_pct": 24.297672751470035
+        }
+      }
+    },
+    "cell_30": {
+      "files": {
+        "train": {
+          "name": "cell_30_train.csv",
+          "bytes": 426220,
+          "sha256": "c905485b1563dce7dc7f68c060e50d1117193f69c2832d26194e315f9c816770",
+          "git_blob_sha1": "26b0552be2c1351038df6f7bf06781a872e2f36e"
+        },
+        "test": {
+          "name": "cell_30_test.csv",
+          "bytes": 15020,
+          "sha256": "00386ba5506c02399de4af257bdaa3b27b26681942768e45e4ac210a4c5bd990",
+          "git_blob_sha1": "1a07570ec64501306d017a7823240a7ddb19df00"
+        },
+        "sample": {
+          "name": "cell_30_sample_submission.csv",
+          "bytes": 71669,
+          "sha256": "7e8ff912d7f35f48f757abc19d5acb609d8c8e98e986281a6c93174752877746",
+          "git_blob_sha1": "8988da9142b6c9687d3fdf1889152e4424df3e5c"
+        },
+        "description": {
+          "name": "data_description_for_cell_grid.pdf",
+          "bytes": 227297,
+          "sha256": "d4d7b2ea8380134122d38b88eda3ad05482ea332803adb4cd3afa9165b430425",
+          "git_blob_sha1": "8df5a69391e564afb1b3fdde9fe32244d7a5b1c0"
+        }
+      },
+      "checks": [
+        {
+          "check": "file.train.exists",
+          "status": "PASS",
+          "detail": "data/raw/cell_30/cell_30_train.csv"
+        },
+        {
+          "check": "file.test.exists",
+          "status": "PASS",
+          "detail": "data/raw/cell_30/cell_30_test.csv"
+        },
+        {
+          "check": "file.sample.exists",
+          "status": "PASS",
+          "detail": "data/raw/cell_30/cell_30_sample_submission.csv"
+        },
+        {
+          "check": "file.description.exists",
+          "status": "PASS",
+          "detail": "data/raw/cell_30/data_description_for_cell_grid.pdf"
+        },
+        {
+          "check": "folder.no_unexpected_files",
+          "status": "PASS",
+          "detail": []
+        },
+        {
+          "check": "train.columns_exact_order",
+          "status": "PASS",
+          "detail": "n_columns=31 expected=31"
+        },
+        {
+          "check": "test.columns_exact_order",
+          "status": "PASS",
+          "detail": "n_columns=31 expected=31"
+        },
+        {
+          "check": "sample.columns_exact_order",
+          "status": "PASS",
+          "detail": "n_columns=31 expected=31"
+        },
+        {
+          "check": "train.rows",
+          "status": "PASS",
+          "detail": 1728
+        },
+        {
+          "check": "test.rows",
+          "status": "PASS",
+          "detail": 289
+        },
+        {
+          "check": "sample.rows",
+          "status": "PASS",
+          "detail": 289
+        },
+        {
+          "check": "train.timestamp_format",
+          "status": "PASS",
+          "detail": "%Y-%m-%d %H:%M:%S"
+        },
+        {
+          "check": "train.timestamp_tz_naive",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.timestamp_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.timestamp_increasing",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.timestamp_regular_5min",
+          "status": "PASS",
+          "detail": "distinct_steps=['0 days 00:05:00']"
+        },
+        {
+          "check": "test.timestamp_format",
+          "status": "PASS",
+          "detail": "%Y-%m-%d %H:%M:%S"
+        },
+        {
+          "check": "test.timestamp_tz_naive",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "test.timestamp_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "test.timestamp_increasing",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "test.timestamp_regular_5min",
+          "status": "PASS",
+          "detail": "distinct_steps=['0 days 00:05:00']"
+        },
+        {
+          "check": "sample.timestamp_format",
+          "status": "PASS",
+          "detail": "%Y-%m-%d %H:%M:%S"
+        },
+        {
+          "check": "sample.timestamp_tz_naive",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.timestamp_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.timestamp_increasing",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.timestamp_regular_5min",
+          "status": "PASS",
+          "detail": "distinct_steps=['0 days 00:05:00']"
+        },
+        {
+          "check": "train.start",
+          "status": "PASS",
+          "detail": "2024-11-30 23:50:00"
+        },
+        {
+          "check": "train.end",
+          "status": "PASS",
+          "detail": "2024-12-06 23:45:00"
+        },
+        {
+          "check": "test.start",
+          "status": "PASS",
+          "detail": "2024-12-06 23:50:00"
+        },
+        {
+          "check": "test.end",
+          "status": "PASS",
+          "detail": "2024-12-07 23:50:00"
+        },
+        {
+          "check": "train_test.contiguous",
+          "status": "PASS",
+          "detail": "0 days 00:05:00"
+        },
+        {
+          "check": "sample.timestamps_equal_test",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_numeric",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_no_nan",
+          "status": "PASS",
+          "detail": 0
+        },
+        {
+          "check": "train.values_finite",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_integer",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_non_negative",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_min_contract",
+          "status": "PASS",
+          "detail": "min=2088 contract_min=2088"
+        },
+        {
+          "check": "train.no_zero_values_for_cells",
+          "status": "PASS",
+          "detail": 0
+        },
+        {
+          "check": "test.values_all_empty",
+          "status": "PASS",
+          "detail": "non_empty_cells=0"
+        },
+        {
+          "check": "sample.values_finite",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.values_non_negative",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.is_seasonal_naive_reference_not_labels",
+          "status": "INFO",
+          "detail": {
+            "definition": "cyclic[h] = train[1728 - 288 + (h % 288)], h = 0..288",
+            "rows_0_287_equal": true,
+            "row_288_equal_cyclic": false,
+            "train_row_indices_equal_to_sample_row_288": [],
+            "row_288_columns_whose_value_never_occurs_in_train_column": 30,
+            "row_288_median_rel_diff_pct_vs_train_1727": 19.034167943270052,
+            "row_288_median_rel_diff_pct_vs_train_1440": 35.88836083465958,
+            "train_typical_adjacent_step_rel_change_pct": 19.07512342738454
+          }
+        }
+      ],
+      "stats": {
+        "train": {
+          "shape": [
+            1728,
+            31
+          ],
+          "n_values": 51840,
+          "min": 2088.0,
+          "max": 28952521.0,
+          "median": 1116748.0,
+          "mean": 1354734.6708140431,
+          "zero_count": 0,
+          "count_ge_thresholds": {
+            "10000.0": 51834,
+            "100000.0": 49966,
+            "300000.0": 44379,
+            "1000000.0": 28607
+          }
+        },
+        "sample_vs_seasonal_naive": {
+          "definition": "cyclic[h] = train[1728 - 288 + (h % 288)], h = 0..288",
+          "rows_0_287_equal": true,
+          "row_288_equal_cyclic": false,
+          "train_row_indices_equal_to_sample_row_288": [],
+          "row_288_columns_whose_value_never_occurs_in_train_column": 30,
+          "row_288_median_rel_diff_pct_vs_train_1727": 19.034167943270052,
+          "row_288_median_rel_diff_pct_vs_train_1440": 35.88836083465958,
+          "train_typical_adjacent_step_rel_change_pct": 19.07512342738454
+        }
+      }
+    },
+    "grid_273": {
+      "files": {
+        "train": {
+          "name": "grid_train.csv",
+          "bytes": 2564179,
+          "sha256": "5be53de5fe390439b540a5285123e817b90163d10c7e9819d5937dbace2ddfff",
+          "git_blob_sha1": "d07ec8d2c5a5a630043e5c7644ef2532ab7708c6"
+        },
+        "test": {
+          "name": "grid_test.csv",
+          "bytes": 87434,
+          "sha256": "4e1acb6ee00b0a201044482949cb4b2a87da1997d7e816a32f1b9df1aa5bcc01",
+          "git_blob_sha1": "f3223357fdd444676b28858a2f5a11bec6c83666"
+        },
+        "sample": {
+          "name": "grid_sample_submission.csv",
+          "bytes": 432404,
+          "sha256": "7132ec851760c1a1e9d533a529a84243696279dfcc30fd26fa7240c8c4d31302",
+          "git_blob_sha1": "d454ff84359bec0b19b3e12653d12cfbb50c9594"
+        },
+        "description": {
+          "name": "data_description_for_cell_grid.pdf",
+          "bytes": 227297,
+          "sha256": "d4d7b2ea8380134122d38b88eda3ad05482ea332803adb4cd3afa9165b430425",
+          "git_blob_sha1": "8df5a69391e564afb1b3fdde9fe32244d7a5b1c0"
+        },
+        "membership": {
+          "name": "grid_cell_membership.csv",
+          "bytes": 5773,
+          "sha256": "1393bdcba923b4fd0431d700df37f276feae86b8b55c49d747f411e1ae599d19",
+          "git_blob_sha1": "a3d469f424950d022c4a383386c804a9d70a43aa"
+        }
+      },
+      "checks": [
+        {
+          "check": "file.train.exists",
+          "status": "PASS",
+          "detail": "data/raw/grid_273/grid_train.csv"
+        },
+        {
+          "check": "file.test.exists",
+          "status": "PASS",
+          "detail": "data/raw/grid_273/grid_test.csv"
+        },
+        {
+          "check": "file.sample.exists",
+          "status": "PASS",
+          "detail": "data/raw/grid_273/grid_sample_submission.csv"
+        },
+        {
+          "check": "file.description.exists",
+          "status": "PASS",
+          "detail": "data/raw/grid_273/data_description_for_cell_grid.pdf"
+        },
+        {
+          "check": "file.membership.exists",
+          "status": "PASS",
+          "detail": "data/raw/grid_273/grid_cell_membership.csv"
+        },
+        {
+          "check": "folder.no_unexpected_files",
+          "status": "PASS",
+          "detail": []
+        },
+        {
+          "check": "train.columns_exact_order",
+          "status": "PASS",
+          "detail": "n_columns=274 expected=274"
+        },
+        {
+          "check": "test.columns_exact_order",
+          "status": "PASS",
+          "detail": "n_columns=274 expected=274"
+        },
+        {
+          "check": "sample.columns_exact_order",
+          "status": "PASS",
+          "detail": "n_columns=274 expected=274"
+        },
+        {
+          "check": "train.rows",
+          "status": "PASS",
+          "detail": 1728
+        },
+        {
+          "check": "test.rows",
+          "status": "PASS",
+          "detail": 289
+        },
+        {
+          "check": "sample.rows",
+          "status": "PASS",
+          "detail": 289
+        },
+        {
+          "check": "train.timestamp_format",
+          "status": "PASS",
+          "detail": "%Y-%m-%d %H:%M:%S"
+        },
+        {
+          "check": "train.timestamp_tz_naive",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.timestamp_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.timestamp_increasing",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.timestamp_regular_5min",
+          "status": "PASS",
+          "detail": "distinct_steps=['0 days 00:05:00']"
+        },
+        {
+          "check": "test.timestamp_format",
+          "status": "PASS",
+          "detail": "%Y-%m-%d %H:%M:%S"
+        },
+        {
+          "check": "test.timestamp_tz_naive",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "test.timestamp_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "test.timestamp_increasing",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "test.timestamp_regular_5min",
+          "status": "PASS",
+          "detail": "distinct_steps=['0 days 00:05:00']"
+        },
+        {
+          "check": "sample.timestamp_format",
+          "status": "PASS",
+          "detail": "%Y-%m-%d %H:%M:%S"
+        },
+        {
+          "check": "sample.timestamp_tz_naive",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.timestamp_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.timestamp_increasing",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.timestamp_regular_5min",
+          "status": "PASS",
+          "detail": "distinct_steps=['0 days 00:05:00']"
+        },
+        {
+          "check": "train.start",
+          "status": "PASS",
+          "detail": "2024-11-30 23:50:00"
+        },
+        {
+          "check": "train.end",
+          "status": "PASS",
+          "detail": "2024-12-06 23:45:00"
+        },
+        {
+          "check": "test.start",
+          "status": "PASS",
+          "detail": "2024-12-06 23:50:00"
+        },
+        {
+          "check": "test.end",
+          "status": "PASS",
+          "detail": "2024-12-07 23:50:00"
+        },
+        {
+          "check": "train_test.contiguous",
+          "status": "PASS",
+          "detail": "0 days 00:05:00"
+        },
+        {
+          "check": "sample.timestamps_equal_test",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_numeric",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_no_nan",
+          "status": "PASS",
+          "detail": 0
+        },
+        {
+          "check": "train.values_finite",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_integer",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_non_negative",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "train.values_min_contract",
+          "status": "PASS",
+          "detail": "min=0 contract_min=0"
+        },
+        {
+          "check": "train.zero_values_grid",
+          "status": "INFO",
+          "detail": {
+            "count": 37740,
+            "fraction": 0.0800010175010175
+          }
+        },
+        {
+          "check": "test.values_all_empty",
+          "status": "PASS",
+          "detail": "non_empty_cells=0"
+        },
+        {
+          "check": "sample.values_finite",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.values_non_negative",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "sample.is_seasonal_naive_reference_not_labels",
+          "status": "INFO",
+          "detail": {
+            "definition": "cyclic[h] = train[1728 - 288 + (h % 288)], h = 0..288",
+            "rows_0_287_equal": true,
+            "row_288_equal_cyclic": false,
+            "train_row_indices_equal_to_sample_row_288": [],
+            "row_288_columns_whose_value_never_occurs_in_train_column": 238,
+            "row_288_median_rel_diff_pct_vs_train_1727": 56.56565656565656,
+            "row_288_median_rel_diff_pct_vs_train_1440": 81.47350656152705,
+            "train_typical_adjacent_step_rel_change_pct": 57.13045919799883
+          }
+        },
+        {
+          "check": "membership.columns",
+          "status": "PASS",
+          "detail": [
+            "grid_id",
+            "cell_id",
+            "grid_index_within_cell"
+          ]
+        },
+        {
+          "check": "membership.rows",
+          "status": "PASS",
+          "detail": 273
+        },
+        {
+          "check": "membership.grid_ids_match_train_columns",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "membership.grid_id_unique",
+          "status": "PASS",
+          "detail": null
+        },
+        {
+          "check": "membership.parent_size_distribution",
+          "status": "PASS",
+          "detail": {
+            "1": 3,
+            "10": 27
+          }
+        },
+        {
+          "check": "membership.parent_ids_within_cell_30",
+          "status": "PASS",
+          "detail": "n_parents=30"
+        }
+      ],
+      "stats": {
+        "train": {
+          "shape": [
+            1728,
+            274
+          ],
+          "n_values": 471744,
+          "min": 0.0,
+          "max": 27701840.0,
+          "median": 10699.5,
+          "mean": 529544.9525992911,
+          "zero_count": 37740,
+          "count_ge_thresholds": {
+            "10000.0": 241343,
+            "100000.0": 80842,
+            "300000.0": 58722,
+            "1000000.0": 47135
+          }
+        },
+        "sample_vs_seasonal_naive": {
+          "definition": "cyclic[h] = train[1728 - 288 + (h % 288)], h = 0..288",
+          "rows_0_287_equal": true,
+          "row_288_equal_cyclic": false,
+          "train_row_indices_equal_to_sample_row_288": [],
+          "row_288_columns_whose_value_never_occurs_in_train_column": 238,
+          "row_288_median_rel_diff_pct_vs_train_1727": 56.56565656565656,
+          "row_288_median_rel_diff_pct_vs_train_1440": 81.47350656152705,
+          "train_typical_adjacent_step_rel_change_pct": 57.13045919799883
+        }
+      }
+    }
+  },
+  "cross_dataset": {
+    "cell_30_train_rows_inside_cell_217_test_window": {
+      "count": 10,
+      "first": "2024-12-06 23:00:00",
+      "last": "2024-12-06 23:45:00"
+    },
+    "grid_273_train_rows_inside_cell_217_test_window": {
+      "count": 10,
+      "first": "2024-12-06 23:00:00",
+      "last": "2024-12-06 23:45:00"
+    },
+    "cell_30_vs_cell_217_value_alignment": {
+      "same_row_index_offset_0_matched_columns": 30,
+      "same_clock_label_offset_10_matched_columns": 0,
+      "of": 30,
+      "interpretation": "matches at equal row index, not at equal clock label: same measurements, cell_30 timestamps labelled 50 min later than cell_217",
+      "note": "counts only; mapping deliberately not stored (cross-dataset use is forbidden)"
+    }
+  },
+  "summary": {
+    "PASS": 132,
+    "FAIL": 0,
+    "WARN": 0,
+    "INFO": 4
+  }
+}

@@ -1,0 +1,26 @@
+# Runtime profile: device, threads, budgets, seeds, output roots.
+# Code must read these values and actually apply them (thread env vars + torch.set_num_threads).
+# Measured container limits (2026-10-26): 24 CPU cores (cgroup quota; os.cpu_count() reports 256),
+# 32 GiB RAM, 1x RTX 5090 32 GiB. See docs/runbooks/environment.md. These are facts, not budgets.
+schema_version: 1
+profile: default
+
+device: cpu              # cpu | cuda — cuda only when the task card budgets GPU use
+threads: 8               # OMP/MKL/OPENBLAS/NUMEXPR_NUM_THREADS and torch.set_num_threads
+max_parallel_jobs: 1
+seed: 42
+
+budgets:                 # defaults per run; a task card may tighten or, with approval, relax them
+  max_wall_minutes: 30
+  max_memory_gib: 8
+  max_gpu_memory_gib: null   # null = GPU not budgeted
+
+outputs:                 # relative to the project root
+  runs_root: runs                    # override: AIE1903_RUNS_ROOT
+  run_summaries: reports/runs
+  experiment_index: reports/experiments.csv
+  submissions_root: submissions
+  figures_root: reports/figures
+
+predictions:
+  clip_negative_to_zero: false   # non-negative is recommended, not required; any clipping is recorded

@@ -1,0 +1,16 @@
+# Experiment config template.
+# Copy to configs/experiments/<dataset>__<model>__<variant>.yaml (e.g. cell_217__snaive__v1.yaml).
+# Every key below is required unless marked optional; unknown keys must be rejected by aie1903.config.
+schema_version: 1
+experiment_id: <dataset>__<model>__<variant>
+task_id: T-YYYYMMDD-NN
+dataset: cell_217                 # one dataset per run (ADR-0005)
+protocol: expanding_289_v1        # must equal configs/validation-plan.json protocol_id
+folds: [dev_a, dev_b]             # heldout only with student approval recorded in the task card
+runtime_profile: default          # configs/runtime.yaml; overrides below are recorded in run.json
+runtime_overrides: {}             # optional, e.g. {threads: 4}
+model:
+  name: seasonal_naive            # registry name in aie1903.models
+  params: {}
+features: []                      # optional; each feature declares its source offsets
+notes: ""

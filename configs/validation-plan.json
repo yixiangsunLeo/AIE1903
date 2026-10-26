@@ -1,46 +1,32 @@
 {
-  "name": "aie1903-chronological-289",
-  "day_cycle": 288,
-  "forecast_horizon": 289,
-  "primary_dataset": "cell_217",
-  "dry_run_dataset": "cell_30",
-  "baseline": "seasonal_naive_daily_cycle",
-  "metrics": [
-    "mae",
-    "rmse",
-    "mape",
-    "masked_mape_3e5",
-    "masked_mape_1e6"
+  "protocol_id": "expanding_289_v1",
+  "status": "accepted-provisional",
+  "decision": "docs/decisions/ADR-0002-validation-protocol-expanding-289-v1.md",
+  "adopted": "2026-10-26",
+  "source": "recommended by handoff (docs/references/handoff-20261026/validation-plan.json); not a course requirement",
+  "supersedes": "aie1903-chronological-289 (legacy; overlapping folds, one truncated 288-step fold; see archive/legacy-scaffold)",
+  "applies_to": ["cell_217", "cell_30", "grid_273"],
+  "available_training_rows": 1728,
+  "index_convention": "zero_based_half_open",
+  "horizon_steps": 289,
+  "seasonal_period_steps": 288,
+  "fit_preprocessors_on_each_fold_training_only": true,
+  "supervised_target_end_must_precede_origin": true,
+  "development_folds": [
+    {"id": "dev_a", "train_start": 0, "train_end_exclusive": 861, "validation_start": 861, "validation_end_exclusive": 1150},
+    {"id": "dev_b", "train_start": 0, "train_end_exclusive": 1150, "validation_start": 1150, "validation_end_exclusive": 1439}
   ],
-  "notes": [
-    "No future leakage: train fold uses only rows strictly before each holdout window.",
-    "Official test is 289 steps (1 day + 5 min). Day cycle is 288.",
-    "Holdouts are carved from the 1728-row train table only (no test labels).",
-    "For a 289-step window ending at index e (exclusive), history is rows [0, e-289).",
-    "Last train day (rows 1440:1728) is the natural seasonal-naive source for official test.",
-    "When fitting a 289-step holdout inside 1728 rows, the final step wraps TOD via h % 288."
-  ],
-  "folds": [
-    {
-      "id": "fold_day4",
-      "history_end": 1152,
-      "holdout_start": 1152,
-      "holdout_end": 1441,
-      "description": "Predict rows [1152,1441) using history [0,1152)."
-    },
-    {
-      "id": "fold_day5",
-      "history_end": 1440,
-      "holdout_start": 1440,
-      "holdout_end": 1728,
-      "description": "Predict rows [1440,1728) (288 steps) using history [0,1440); truncate horizon to available labels."
-    },
-    {
-      "id": "fold_last289",
-      "history_end": 1439,
-      "holdout_start": 1439,
-      "holdout_end": 1728,
-      "description": "Predict last 289 train rows [1439,1728) using history [0,1439)."
-    }
+  "heldout_fold": {"id": "heldout", "train_start": 0, "train_end_exclusive": 1439, "validation_start": 1439, "validation_end_exclusive": 1728},
+  "heldout_policy": "evaluate only after model and selection rule are frozen and the student approves; every evaluation is recorded; repeated adaptation invalidates untouched status",
+  "heldout_status": "untouched",
+  "final_fit_end_exclusive": 1728,
+  "final_prediction_steps": 289,
+  "known_limitations": [
+    "six_days_only",
+    "weak_evidence_for_weekday_effects",
+    "short_history_does_not_establish_interval_coverage_guarantees",
+    "dev_a_fit_has_861_rows_limits_direct_multistep_lookback_to_about_572",
+    "validation_origins_are_1_to_3_steps_earlier_in_time_of_day_than_the_official_test_origin",
+    "only_two_development_folds"
   ]
 }
