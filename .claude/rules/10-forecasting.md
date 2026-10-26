@@ -1,1 +1,1 @@
-../../.cursor/rules/10-forecasting.mdc
+../../rules/10-forecasting.md
