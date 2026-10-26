@@ -1,0 +1,48 @@
+#!/bin/sh
+# AIE1903 pre-commit hook: blocks content that must never enter Git
+# (docs/standards/git-workflow.md section 5). Enable: git config core.hooksPath .githooks
+max_bytes=2000000
+fail=0
+list=$(mktemp)
+trap 'rm -f "$list"' EXIT
+git diff --cached --name-only --diff-filter=ACMR > "$list"
+
+block() {
+  echo "pre-commit: $1: $2" >&2
+  fail=1
+}
+
+while IFS= read -r path; do
+  [ -z "$path" ] && continue
+  case "$path" in
+    data/raw/.gitkeep|data/interim/.gitkeep|data/processed/.gitkeep) ;;
+    data/raw/*|data/interim/*|data/processed/*) block "data file" "$path" ;;
+    runs/README.md) ;;
+    runs/*|logs/*|backups/*) block "generated output" "$path" ;;
+    submissions/*.csv|submissions/*/*.csv) block "submission CSV" "$path" ;;
+    artifacts/models/.gitkeep) ;;
+    artifacts/models/*) block "model artifact" "$path" ;;
+    .env.example|*/.env.example) ;;
+    .env|.env.*|*/.env|*/.env.*) block "environment file" "$path" ;;
+    *.pem|*.key|*.p12|*.pfx|*id_rsa*|*id_ed25519*|.ssh/*|*/.ssh/*) block "key material" "$path" ;;
+    .agent-lock) block "writer lock" "$path" ;;
+  esac
+  case "${path##*/}" in
+    '.!!!'*) block "NFS junk file" "$path" ;;
+  esac
+  if git cat-file -e ":$path" 2>/dev/null; then
+    size=$(git cat-file -s ":$path")
+    if [ "$size" -gt "$max_bytes" ]; then
+      block "file larger than $max_bytes bytes ($size)" "$path"
+    fi
+    if git cat-file -p ":$path" | grep -Eq -- '-----BEGIN [A-Z ]*PRIVATE KEY-----|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{20,}|sk-ant-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}'; then
+      block "looks like a secret or token" "$path"
+    fi
+  fi
+done < "$list"
+
+if [ "$fail" -ne 0 ]; then
+  echo "pre-commit: commit blocked; unstage the files above (git restore --staged <path>)." >&2
+  exit 1
+fi
+exit 0

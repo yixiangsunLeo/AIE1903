@@ -1,0 +1,38 @@
+#!/bin/sh
+# AIE1903 commit-msg hook: enforces docs/standards/git-workflow.md section 3.
+# Enable once per clone: git config core.hooksPath .githooks
+LC_ALL=C.UTF-8
+export LC_ALL
+
+msg_file="$1"
+subject=$(grep -v '^#' "$msg_file" | sed '/^[[:space:]]*$/d' | head -n 1)
+
+case "$subject" in
+  "Merge "*|"Revert "*|"fixup! "*|"squash! "*|"amend! "*) exit 0 ;;
+esac
+
+types='feat|fix|refactor|perf|test|docs|chore|build|exp|data|revert'
+if ! printf '%s\n' "$subject" | grep -Eq "^($types)(\([a-z0-9._/-]+\))?!?: [^ ].*"; then
+  echo "commit-msg: subject must look like '<type>(<scope>): <summary>'" >&2
+  echo "  allowed types: $types" >&2
+  echo "  got: $subject" >&2
+  exit 1
+fi
+
+length=$(printf '%s' "$subject" | wc -m)
+if [ "$length" -gt 72 ]; then
+  echo "commit-msg: subject is $length characters; the limit is 72" >&2
+  exit 1
+fi
+
+if ! grep -Eq '^Task: (T-[0-9]{8}-[0-9]{2}|trivial)[[:space:]]*$' "$msg_file"; then
+  echo "commit-msg: missing trailer 'Task: T-YYYYMMDD-NN' (or 'Task: trivial')" >&2
+  exit 1
+fi
+
+if ! grep -Eq '^Actor: [A-Za-z0-9][A-Za-z0-9._+/-]*[[:space:]]*$' "$msg_file"; then
+  echo "commit-msg: missing trailer 'Actor: <tool>/<model>' or 'Actor: human/<name>'" >&2
+  exit 1
+fi
+
+exit 0

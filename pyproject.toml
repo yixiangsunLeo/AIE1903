@@ -3,16 +3,39 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "aie1903-group-project"
-version = "0.1.0"
-description = "AIE1903 wireless network traffic forecasting (217-cell mainline)"
+name = "aie1903"
+version = "0.2.0"
+description = "AIE1903 wireless uplink traffic forecasting (mainline: cell_217)"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
+authors = [{ name = "Yixiang Sun" }]
+# Runtime dependencies; the school image provides them (see requirements.lock).
+dependencies = [
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "PyYAML>=6.0",
+  "matplotlib>=3.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3", "ruff>=0.8"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
 testpaths = ["tests"]
 addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+# Read-only references and frozen audit evidence are not project code.
+extend-exclude = ["docs/references", "reports/audit"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY", "SIM"]
+
+[tool.ruff.format]
+quote-style = "double"

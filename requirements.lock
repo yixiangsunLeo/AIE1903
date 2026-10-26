@@ -1,0 +1,19 @@
+# Verified environment lock — 2026-10-26, task T-20261026-01, docs/decisions/ADR-0004.
+# Image jr1903:0.0.1, Python 3.12.3, project venv created with --system-site-packages.
+# Full snapshot (incl. NVIDIA image packages): reports/audit/A-20261026-framework/pip-freeze-venv.txt
+# Update this file whenever pyproject.toml dependencies change.
+
+# --- Provided by the school image (system site-packages; do not reinstall) ---
+numpy==2.1.0
+pandas==3.0.2
+PyYAML==6.0.1
+matplotlib==3.10.9
+# Present in the image but not yet project dependencies:
+#   scipy==1.17.1  torch==2.12.0a0+5aff3928d8.nv26.5.50603568 (CUDA 13.2)  pyarrow==24.0.0
+#   jupyterlab==4.5.7  ipykernel==7.2.0
+
+# --- Installed into .venv by `pip install -e '.[dev]'` ---
+pytest==9.1.1
+pluggy==1.7.0
+iniconfig==2.3.1
+ruff==0.17.2
