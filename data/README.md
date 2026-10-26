@@ -34,6 +34,18 @@ mkdir -p raw && cp -rn "$tmp/cd/cell_217" "$tmp/cd/cell_30" "$tmp/cd/grid_273" r
 sha256sum -c checksums.sha256
 ```
 
+## 恢复（checksum 报告缺失或不一致时）
+
+两份 PDF 在 Git 历史中保存有官方原件，可以直接恢复：
+
+```bash
+cd /ai/workspace/AIE1903
+git show archive/legacy-scaffold:data/raw/cell_217/data_description_for_cell_217.pdf > data/raw/cell_217/data_description_for_cell_217.pdf
+git show archive/legacy-scaffold:data/raw/cell_30/data_description_for_cell_grid.pdf > data/raw/cell_30/data_description_for_cell_grid.pdf
+```
+
+其他文件按上一节"重新获取"的方法从官方提交下载。恢复后再执行一次 `sha256sum -c checksums.sha256`，并在 worklog 中记录。
+
 ## 规则
 
 - 不编辑、不重命名、不覆盖 `raw/` 中的文件。发现文件与 checksum 不一致时，停下来报告。

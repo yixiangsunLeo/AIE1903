@@ -58,6 +58,19 @@ git config commit.template .gitmessage
 - `.env`、私钥、令牌、`.ssh/`、`.agent-lock`、`.venv/`、各种缓存。
 - 注意：`.gitignore` 只能防止新文件入库，**已经在历史里的文件不会因此消失**。历史中曾有原始数据（见 project-context §6），已如实记录，没有改写历史。
 
+### 5.1 查看旧版本时不要检出到主工作树
+
+`data/raw/` 下的 PDF 曾在提交 e67e336 之前被 Git 跟踪。如果在主工作树里检出更早的提交（比如 `archive/legacy-scaffold`），再切回来，git 会把这些 PDF **从磁盘上删除**。2026-10-26 已经发生过一次，靠 checksum 发现并恢复。
+
+查看旧版本请用下面的办法，不要动主工作树：
+
+```bash
+git show archive/legacy-scaffold:src/aie1903_project/metrics.py      # 查看单个文件
+git worktree add /tmp/aie1903-legacy archive/legacy-scaffold          # 完整查看；用完执行 git worktree remove /tmp/aie1903-legacy
+```
+
+如果已经出了问题：先用 `(cd data && sha256sum -c checksums.sha256)` 找出缺失的文件，再按 `data/README.md` 的"恢复"一节处理。
+
 ## 6. 推送与标签
 
 - **推送需要授权**：用户在本会话中明确要求，或者 `docs/current-status.md` 中记有常设授权。

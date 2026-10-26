@@ -144,7 +144,10 @@ backups/
 ## 收尾与交接
 
 - **结果**：框架 v0.2.0 完成；验收标准 1–6 已经满足；第 7 项见推送记录。
-- **回退办法**：`git switch --detach archive/legacy-scaffold` 可以查看旧状态。合并提交可以用 `git revert -m 1 <merge>` 撤销，不需要改写历史。
+- **回退办法**：
+  - 查看旧状态：`git worktree add /tmp/aie1903-legacy archive/legacy-scaffold`。**不要**在主工作树里检出旧提交，原因见 git-workflow §5.1。
+  - 撤销合并：`git revert -m 1 <merge>`，不需要改写历史。
+- **执行中的事故**：合并前我曾在主工作树中切换到旧的 `main`，再合并回来，导致两份取消跟踪的 PDF 被 git 从磁盘删除。`sha256sum -c` 立刻发现了问题；已从 `archive/legacy-scaffold` 恢复，blob 与官方一致，13/13 校验 OK。防范办法已写入 git-workflow §5.1 和 data/README.md 的"恢复"一节。
 - **待用户处理的事项**：
   1. 授权创建 `.cursorignore`，或者手动创建；
   2. 确认是否删除项目外的 4 个暂存件；
