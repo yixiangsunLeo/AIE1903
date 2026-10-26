@@ -14,3 +14,4 @@
 | [ADR-0003](ADR-0003-provisional-metric-definitions.md) | 指标口径 provisional-v1 | accepted-provisional | 2026-10-26 |
 | [ADR-0004](ADR-0004-environment-venv-system-site-packages.md) | 项目 venv 复用镜像包 | accepted | 2026-10-26 |
 | [ADR-0005](ADR-0005-dataset-isolation-and-sample-files.md) | 数据集隔离与 sample 文件禁用 | accepted | 2026-10-26 |
+| [ADR-0006](ADR-0006-rules-single-source-multi-agent.md) | 规则唯一源（rules/）与多代理适配 | accepted | 2026-10-26 |

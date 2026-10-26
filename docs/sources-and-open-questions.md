@@ -10,6 +10,7 @@
 | `data_description_for_cell_grid.pdf` | blob `8df5a693` | cell_30 与 grid_273 的数据合同与指标 |
 | 交接文档 `docs/references/handoff-20261026/` | 2026-10-26 | 本轮的任务要求；课程讲义要点的转述 |
 | Cursor 规则文档 <https://cursor.com/docs/rules> | 2026-10-26 查阅 | `.mdc` frontmatter；`@文件` 引用不会内联；会自动读取 AGENTS.md |
+| 服务器实测（审计 A-20261026-server） | 2026-10-26 | 平台、资源、存储、网络、软件栈、训练冒烟；手册见 docs/runbooks/environment.md 和 docs/runbooks/training.md |
 | Claude Code memory 文档 <https://code.claude.com/docs/en/memory> | 2026-10-26 查阅 | `@` 导入（最多 4 层，代码块和反引号内不生效）；同时存在 CLAUDE.md 和 AGENTS.md 时只读 CLAUDE.md；`.claude/rules` 只读取 `paths` 字段；可用 `/context` 验证加载情况 |
 
 ## 2. 未决问题
@@ -20,9 +21,11 @@
 | Q2 | 官方评分代码中 Masked MAPE 的分母（217PDF 写 n，CGPDF 写 n′） | 指标口径 | 课程方 | 暂按 provisional-v1（ADR-0003） |
 | Q3 | GitHub 仓库目前是**公开**的，而课程要求每组一个私有仓库，并给课程人员访问权限 | 合规；他组可能看到代码 | 学生（GitHub → Settings → Change visibility） | 待处理 |
 | Q4 | cell_30 和 grid_273 的 sample 第 289 行疑似含测试期真值（ADR-0005） | 竞赛公平性 | 学生决定是否反馈给课程方 | 待决定；本项目已禁止读取 sample 数值 |
-| Q5 | Claude Code 与 Grokbot 的运行模式：box 克隆加远程执行，还是在学校环境直接运行（environment.md §4） | 指令能否加载；是否只有单一工作树 | 学生 | 待决定；推荐模式 B |
+| Q5 | Claude Code 与 Grokbot 的运行模式：box 克隆加远程执行，还是在学校环境直接运行（environment.md §8） | 指令能否加载；是否只有单一工作树 | 学生 | 待决定；推荐模式 B |
 | Q6 | 组员名单、GitHub 用户名与分工 | 贡献记录；仓库权限 | 学生 | README 的"团队"一节待填 |
 | Q7 | 镜像名是 `jr1903:0.0.1` 还是 `jr/jr1903`（旧文档写法不一致） | 环境重建 | 学生在平台上确认 | 待确认 |
+| Q9 | 平台的计费方式、机时上限、GPU 是否独占、空闲时是否自动回收（容器内无法确认） | 长任务规划、释放时机 | 学生查看平台页面或课程通知 | 待确认 |
+| Q10 | 是否把 `/ai/workspace/.ssh/config` 的 `HostName` 改为 FQDN（`github.com.`，配合 `HostKeyAlias github.com`），以规避 DNS 偶发失败 | 推送稳定性 | 学生授权（项目外文件） | 待决定；目前用重试应对 |
 
 ## 3. 已关闭的问题
 
