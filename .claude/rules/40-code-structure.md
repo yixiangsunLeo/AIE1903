@@ -1,0 +1,1 @@
+../../.cursor/rules/40-code-structure.mdc
