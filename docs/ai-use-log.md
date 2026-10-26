@@ -11,3 +11,4 @@
 | 2026-09-15 | human/Yixiang Sun + Cursor | — | 可复用的小组项目骨架（`aie1903_project` 布局） | — | 提交 cf8bdad（已归档到 `archive/legacy-scaffold`） | 由作者本人完成 |
 | 2026-10-26 | 操作者 + Claude Code（CC Switch） | — | 学校盘上的初始脚手架：指标、季节朴素基线、旧验证协议、cell_30 回测；并与 GitHub 骨架合并 | — | 提交 80122a8、146a5f0、6c2d40e、203a73b；`reports/legacy/` | pending |
 | 2026-10-26 | cursor/claude-opus-5.5 | T-20261026-01 | 审计项目、数据与环境；补齐 grid_273；发现 cell_30 与 cell_217 的 50 分钟时钟偏移，以及 sample 末行疑似含真值；重建框架，包括 SOUL、AGENTS、CLAUDE、规则、记录体系、功能区契约、配置、hooks 和 venv；移除旧代码；推送到 GitHub | 待学生复核 ADR-0002 和 ADR-0003（验证协议与指标口径为暂行采用） | `docs/tasks/T-20261026-01-framework-rebuild.md`；`reports/audit/A-20261026-framework/` | pending |
+| 2026-10-26 | cursor/claude-opus-5.5 | T-20261026-02 | 摸底学校服务器（平台、资源、存储、网络、GPU 与训练栈），量化线程过度订阅、TF32 和 DNS 问题；编写服务器手册与训练手册；把规则改为 `rules/` 唯一源加多代理适配，并用 hook 强制执行 | 待学生复核 ADR-0006 | `docs/tasks/T-20261026-02-server-survey-and-rules.md`；`reports/audit/A-20261026-server/` | pending |

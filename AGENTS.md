@@ -1,6 +1,6 @@
 # AGENTS.md — AIE1903 代理共享约定
 
-Cursor、Claude Code、Grokbot 共用本文件：Cursor 会自动加载它，Claude Code 通过 CLAUDE.md 导入。价值观见 `SOUL.md`，流程细则见 `docs/agent-contract.md`。
+本文件是 Cursor、Claude Code、Grokbot 以及其他任何代理的统一入口：Cursor 和多数代理会自动加载它，Claude Code 通过 CLAUDE.md 导入。价值观见 `SOUL.md`，强制规则见 `rules/`（下方"规则"一节），流程细则见 `docs/agent-contract.md`。
 
 如果指令之间有冲突，按以下顺序取舍，并把冲突写进当前任务卡：用户当次的明确指令 > 本文件的红线 > SOUL.md > docs/ 中的细则。
 
@@ -8,14 +8,29 @@ Cursor、Claude Code、Grokbot 共用本文件：Cursor 会自动加载它，Cla
 
 CUHK-SZ AIE1903 课程项目：无线网络上行流量预测。用 6 天历史（1728 个 5 分钟点）一次性预测接下来的 289 个点。主线是 **cell_217**；**cell_30** 只用于流程演练；**grid_273** 等主线完成后再扩展。
 
-当前阶段：框架 v0.2.0 已搭好，功能代码尚未实现；按 `docs/roadmap.md` 的里程碑依次开发。真实状态以 `docs/current-status.md` 为准。
+当前阶段：框架 v0.2.1 已搭好（服务器已摸底，规则以 `rules/` 为唯一源），功能代码尚未实现；按 `docs/roadmap.md` 的里程碑依次开发。真实状态以 `docs/current-status.md` 为准。
 
 ## 开工（每个会话）
 
 1. 确认项目根：同时含本文件和 `pyproject.toml` 的目录（学校环境为 `/ai/workspace/AIE1903`，存储卷 sun）。
 2. 查看 `git status`、当前分支、未提交改动、`.agent-lock` 和正在运行的任务。他人的改动不 stash、不 reset、不 clean、不覆盖。
-3. 依次阅读：`SOUL.md` → `docs/current-status.md` → 当前任务卡 `docs/tasks/<task_id>-*.md` → 与任务相关的文档（project-context、architecture、standards）。
+3. 依次阅读：`SOUL.md` → **`rules/` 下的全部规则** → `docs/current-status.md` → 当前任务卡 `docs/tasks/<task_id>-*.md` → 与任务相关的文档（project-context、architecture、standards、runbooks）。
 4. 赛道、路径、预算一律以 `configs/` 中的真实配置为准，不凭聊天记忆。
+
+## 规则（所有代理都必须读完）
+
+`rules/` 是全部强制规则的**唯一源**，格式是纯 Markdown，任何代理都能读（ADR-0006）。Cursor 和 Claude Code 会自动加载由 `scripts/sync-rules.sh` 生成的副本或链接；其他代理必须自己打开这些文件读完。
+
+| 规则 | 内容 |
+|---|---|
+| `rules/00-project.md` | 开工顺序、红线、需要授权的事项、规则维护方式 |
+| `rules/10-forecasting.md` | 时间边界、数据语义、官方指标口径 |
+| `rules/20-records.md` | 任务卡、分支与提交、运行记录、收尾 |
+| `rules/30-server.md` | 学校服务器的事实、资源上限、持久化、网络、软件、进程 |
+| `rules/35-training.md` | 训练与运行：预算、线程、精度、确定性、启动、监控、记录 |
+| `rules/40-code-structure.md` | 功能区边界、依赖方向、写法 |
+
+新增或修改规则时，只改 `rules/*.md`，然后运行 `scripts/sync-rules.sh`，pre-commit 会检查副本是否一致。不要只在某个工具的专用配置里写规则。维护细则见 `rules/README.md`。
 
 ## 不可违反的约束
 
@@ -41,6 +56,14 @@ CUHK-SZ AIE1903 课程项目：无线网络上行流量预测。用 6 天历史�
 - 不打印、不提交密码、密钥或令牌。SSH 密钥在 `/ai/workspace/.ssh/`，只读使用。
 - 以下操作需要用户明确授权：推送 GitHub；修改 SOUL.md、验证协议或指标口径；动用 heldout；使用 GPU 或执行超出预算的任务；删除项目根之外的文件；公开发布或正式提交。
 - 持久状态只放在 `/ai/workspace`；忽略 NFS 垃圾文件 `.!!!*`。不改系统 Python、CUDA 或全局配置；不结束归属不明的进程。
+
+### 服务器与训练（要点，完整内容见 rules/30-server.md、rules/35-training.md）
+
+- 容器的 CPU 配额只有 **24 核**，`nproc` 显示的 256 不可信；内存 32 GiB，没有 swap；1 张 RTX 5090。每次运行都要**显式设置线程数**（默认 8，不超过 24）。
+- 只有 `/ai/workspace` 是持久的；`/root`、`/tmp` 和缓存都会随环境释放而消失。
+- 长任务必须用 `setsid nohup … &` 启动并记录 PID。Cursor 断开 300 秒后服务端会自动关闭，普通方式启动的任务可能被一起结束。
+- GPU 默认使用 TF32，会改变计算结果。默认精度是 `fp32_strict`，并且打开确定性设置。
+- DNS 偶尔解析失败，重试即可。没有 IPv6；wandb 只能设为 disabled 或 offline；pip 不得替换镜像自带的 torch。
 
 ## 代码功能区（详见 docs/architecture.md）
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aie1903"
-version = "0.2.0"
+version = "0.2.1"
 description = "AIE1903 wireless uplink traffic forecasting (mainline: cell_217)"
 readme = "README.md"
 requires-python = ">=3.11"

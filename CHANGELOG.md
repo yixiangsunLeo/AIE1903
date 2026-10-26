@@ -2,6 +2,49 @@
 
 按任务记录：为什么改、改了什么、怎么验证的。逐行差异见 Git，任务细节见对应的任务卡。
 
+## [0.2.1] — 2026-10-26 · T-20261026-02 服务器摸底与多代理规则
+
+### 为什么
+
+- 用户要求摸清本机服务器"怎么运作、怎么训练"并写入规则；
+- 同时要求"所有规则必须是 Cursor、Claude 或者其他代理都能读完的"。
+
+### 新增
+
+- **审计 `A-20261026-server`**：
+  - 三个脚本：只读探测、性能基准、随机数据训练冒烟；
+  - 对应的 JSON 证据。
+- **手册**：
+  - `docs/runbooks/environment.md` 扩写为完整的服务器手册；
+  - 新增 `docs/runbooks/training.md`（训练流程）。
+- **规则**：
+  - 新增 `rules/` 作为唯一源；
+  - 新增 `35-training.md`；
+  - 重写 `30-server.md`，写入实测事实：24 核配额、torch 默认 128 线程导致的过度订阅、默认 TF32、Cursor 断开 300 秒后自动关闭、`setsid nohup`、DNS 偶发失败、没有 IPv6、NFS 小文件慢、pip 不得替换镜像 torch、wandb 只能离线。
+- **规则工具**：
+  - `scripts/sync-rules.sh`：生成 `.cursor/rules` 的真实副本（加上由 SOUL.md 生成的 `05-soul.mdc`）和 `.claude/rules` 的符号链接；
+  - pre-commit 增加规则一致性检查；
+  - `scripts/check-framework.py`：175 项框架检查。
+- ADR-0006。
+
+### 变更
+
+- AGENTS.md：新增"规则"一节（所有代理必须读完）和"服务器与训练要点"。
+- CLAUDE.md、README、grokbot、agent-contract、git-workflow 同步更新。
+- `configs/runtime.yaml` 升到 v2：线程上限 24、精度 `fp32_strict`、确定性、默认环境变量。
+- 修正版本规则与 roadmap 之间的矛盾：框架调整升 patch，里程碑组完成升 minor。
+
+### 验证
+
+详见 `docs/tasks/T-20261026-02-server-survey-and-rules.md` 的"真实验证"一节：
+
+- 三个探测脚本的退出码都是 0；
+- `sync-rules --check` 的正例、反例都符合预期；
+- pre-commit 规则检查的 5 种情况都符合预期；
+- check-framework 175/175；
+- pytest 19 项通过；
+- ruff 检查通过。
+
 ## [0.2.0] — 2026-10-26 · T-20261026-01 框架重建
 
 ### 为什么

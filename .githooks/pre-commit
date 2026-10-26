@@ -41,6 +41,19 @@ while IFS= read -r path; do
   fi
 done < "$list"
 
+# Rule adapters must match their single source (rules/README.md, ADR-0006).
+if grep -Eq '^(rules/|\.cursor/rules/|\.claude/rules/|SOUL\.md$)' "$list"; then
+  if ! git diff --quiet -- rules .cursor/rules .claude/rules SOUL.md; then
+    block "rules" "unstaged changes; stage rules/, .cursor/rules/, .claude/rules/ and SOUL.md together"
+  fi
+  if [ -n "$(git ls-files --others --exclude-standard -- rules .cursor/rules .claude/rules)" ]; then
+    block "rules" "untracked rule files; run scripts/sync-rules.sh and stage the result"
+  fi
+  if [ -x scripts/sync-rules.sh ] && ! scripts/sync-rules.sh --check >/dev/null 2>&1; then
+    block "rules" "adapters are stale; run scripts/sync-rules.sh and stage the result"
+  fi
+fi
+
 if [ "$fail" -ne 0 ]; then
   echo "pre-commit: commit blocked; unstage the files above (git restore --staged <path>)." >&2
   exit 1

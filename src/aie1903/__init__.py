@@ -12,7 +12,7 @@ Functional areas; contracts, interfaces and allowed imports live in docs/archite
     pipelines   orchestration of backtest and final prediction
     viz         standard figures built from recorded artifacts
 
-Status: framework only (v0.2.0). No area is implemented yet; see docs/roadmap.md.
+Status: framework only (v0.2.1). No area is implemented yet; see docs/roadmap.md.
 """
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"

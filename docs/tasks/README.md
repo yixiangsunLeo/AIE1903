@@ -7,3 +7,4 @@
 | task_id | 标题 | 状态 | 执行者 | 分支 | 日期 |
 |---|---|---|---|---|---|
 | [T-20261026-01](T-20261026-01-framework-rebuild.md) | 项目框架重建（规则、记录、功能区、配置、数据校验、Git） | completed | cursor/claude-opus-5.5 | task/T-20261026-01-framework-rebuild | 2026-10-26 |
+| [T-20261026-02](T-20261026-02-server-survey-and-rules.md) | 服务器摸底与训练手册；规则改为唯一源、多代理通用 | completed | cursor/claude-opus-5.5 | task/T-20261026-02-server-survey-and-rules | 2026-10-26 |

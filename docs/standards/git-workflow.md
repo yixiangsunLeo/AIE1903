@@ -47,7 +47,7 @@ git config commit.template .gitmessage
 | hook | 检查内容 |
 |---|---|
 | `commit-msg` | 标题格式、长度不超过 72 个字符、是否有 `Task:` 和 `Actor:` 尾注（Merge 和 Revert 开头的提交放行） |
-| `pre-commit` | 是否混入原始数据或中间数据、runs/、submissions 的 CSV、模型权重、.env、私钥、单个超过 2 MB 的文件、NFS 垃圾文件 `.!!!*`，以及常见的令牌格式 |
+| `pre-commit` | 是否混入原始数据或中间数据、runs/、submissions 的 CSV、模型权重、.env、私钥、单个超过 2 MB 的文件、NFS 垃圾文件 `.!!!*`，以及常见的令牌格式。另外，只要提交涉及规则文件，就要求 `rules/`、`.cursor/rules/`、`.claude/rules/` 和 `SOUL.md` 没有漏暂存的改动，并且 `scripts/sync-rules.sh --check` 通过 |
 
 不要用 `--no-verify` 绕过。确实需要时，在任务卡里写明原因，并说明事后怎么修复。
 
@@ -85,9 +85,9 @@ done
 
 - **推送需要授权**：用户在本会话中明确要求，或者 `docs/current-status.md` 中记有常设授权。
 - 禁止 force push，禁止改写已推送的历史，禁止删除远端标签。
-- 版本标签用 `vX.Y.Z`（附注标签）：
-  - 框架层变更升 minor；
-  - 里程碑完成时打标签，例如 M1–M7 全部完成时打 `v0.3.0`。
+- 版本标签用 `vX.Y.Z`（附注标签），并与 `pyproject.toml` 和 `aie1903.__version__` 保持一致：
+  - 规则、文档、框架层的调整升 patch（0.2.x）；
+  - 完成一组里程碑时升 minor，例如 M1–M8 全部完成时打 `v0.3.0`（与 roadmap 一致）。
 - 归档标签用 `archive/<name>`。当前已有 `archive/legacy-scaffold`，保存重建前的旧代码。
 - 推送后用 `git ls-remote origin` 确认远端与本地 HEAD 一致，并把结果记进 worklog。
 

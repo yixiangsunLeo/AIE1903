@@ -1,1 +1,1 @@
-../../.cursor/rules/30-server.mdc
+../../rules/30-server.md

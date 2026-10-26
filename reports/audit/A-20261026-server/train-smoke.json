@@ -1,0 +1,71 @@
+{
+ "audit_id": "A-20261026-server",
+ "task_id": "T-20261026-02",
+ "captured_at": "2026-10-26T22:29:13+08:00",
+ "data": "random tensors only (no project data)",
+ "model": "LSTM(1->64, 2 layers) + Linear(64->289); batch 128, lookback 288",
+ "torch": "2.12.0a0+5aff3928d8.nv26.05",
+ "cpu_threads": 8,
+ "runs": [
+  {
+   "device": "cpu",
+   "precision": "fp32_strict",
+   "steps": 8,
+   "step_ms_median": 112.51,
+   "first_step_ms": 529.3,
+   "loss_first": 1.00873,
+   "loss_last": 1.002324,
+   "final_param_checksum": 7.567042517574919
+  },
+  {
+   "device": "cuda",
+   "precision": "fp32_strict",
+   "steps": 40,
+   "step_ms_median": 2.41,
+   "first_step_ms": 329.8,
+   "loss_first": 1.00873,
+   "loss_last": 0.996326,
+   "final_param_checksum": 4.161141508274795,
+   "peak_gpu_mib": 399.8
+  },
+  {
+   "device": "cuda",
+   "precision": "tf32_default",
+   "steps": 40,
+   "step_ms_median": 2.38,
+   "first_step_ms": 4.3,
+   "loss_first": 1.008729,
+   "loss_last": 0.996326,
+   "final_param_checksum": 4.159317292549531,
+   "peak_gpu_mib": 399.8
+  },
+  {
+   "device": "cuda",
+   "precision": "bf16_autocast",
+   "steps": 40,
+   "step_ms_median": 1.99,
+   "first_step_ms": 288.0,
+   "loss_first": 1.00873,
+   "loss_last": 0.996342,
+   "final_param_checksum": 2.8544784493921043,
+   "peak_gpu_mib": 240.5
+  }
+ ],
+ "determinism_gpu_fp32": {
+  "ok": true,
+  "checksum_a": 1.1891891516413011,
+  "checksum_b": 1.1891891516413011
+ },
+ "torch_compile_sm120": {
+  "ok": true,
+  "first_call_incl_compile_s": 3.25,
+  "steady_step_ms": 1.367,
+  "wall_s": 7.6
+ },
+ "gpu_mem_after_gib": {
+  "free": 30.19,
+  "total": 31.4
+ },
+ "peak_rss_mib": 1853.5,
+ "wall_s": 10.8
+}
