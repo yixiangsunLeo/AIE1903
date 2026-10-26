@@ -72,8 +72,8 @@ export GIT_SSH_COMMAND="ssh -F /ai/workspace/.ssh/config -o UserKnownHostsFile=/
 
 - **DNS 偶发失败**：使用 NodeLocal DNSCache，配置 `ndots:5` 并带有 search 域。普通写法 `github.com` 偶尔会解析失败，失败成簇出现，实测失败率在 0% 到 6% 之间；写成 FQDN（`github.com.`）后，400 次查询零失败。
   - 一般处理：**重试**即可。`git push` 和 `ls-remote` 循环 3–4 次，每次间隔 3 秒。
-  - 可选的根治办法（需要用户同意后修改 `/ai/workspace/.ssh/config`）：在 `Host github.com` 下设置 `HostName github.com.` 和 `HostKeyAlias github.com`。
-  - 不要修改系统 DNS 或网络配置。
+  - **GitHub SSH 已改用 FQDN**（2026-10-26 经用户授权）：`/ai/workspace/.ssh/config` 的 `Host github.com` 下设置了 `HostName github.com.` 和 `HostKeyAlias github.com`，原文件备份为 `config.bak-20261026`。修改后用 BatchMode 认证 5 次，全部成功。
+  - 其他域名仍然走 search 域，偶尔失败时重试即可。不要修改系统 DNS 或网络配置。
 - **没有 IPv6 出网能力**。DNS 会对部分域名返回 IPv6 地址，curl 和 Python 会自动回退到 IPv4；个别工具失败时可以加 `-4` 或设置 `AddressFamily inet`。
 - **没有代理**。可以访问：GitHub（SSH 和 HTTPS）、api.github.com、PyPI、阿里云镜像 `https://mirrors.aliyun.com/pypi/simple/`（实测最快）、download.pytorch.org、huggingface.co。清华镜像和 hf-mirror 不稳定，kaggle 不通。
 - **数据外发规则**：不把原始数据发给外部模型或服务。**wandb 已安装，但不得在线使用**：没有用户授权时，只允许 `WANDB_MODE=disabled` 或 `offline`。

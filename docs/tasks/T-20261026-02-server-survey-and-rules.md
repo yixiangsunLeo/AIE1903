@@ -22,7 +22,9 @@
 ## 依赖与授权
 
 - **GPU 冒烟测试的依据**：用户要求"摸清楚怎么训练"，所以做了一次有上限的验证：不超过 60 秒、显存不超过 2 GiB、只用随机数据。实际 12.6 秒，峰值显存 400 MiB。
-- **推送**：本任务没有推送授权，结束时请示。
+- **推送**：本任务开始时没有推送授权，结束时请示。22:43 用户通过提问表单授权两件事：
+  1. 合并到 main、打标签 v0.2.1 并推送；
+  2. 修改 `/ai/workspace/.ssh/config`，改用 FQDN（Q10）。
 
 ## 预算
 
@@ -65,6 +67,8 @@
 | `scripts/check-framework.py` | 0 | 175/175 |
 | `.venv/bin/python -m pytest` | 0 | 19 passed（版本已同步为 0.2.1） |
 | `ruff check` 和 `ruff format --check` | 0 | 通过；新脚本修正了行长和 B905 |
+| SSH 改用 FQDN（已授权）：先备份为 `config.bak-20261026`，再执行 `ssh -G` 和 5 次 BatchMode 的 `ssh -T` | 0 | 生效后 hostname 为 `github.com.`、hostkeyalias 为 `github.com`；5/5 认证成功，没有出现主机密钥提示 |
+| 合并到 main、打标签 v0.2.1、推送，再执行 `git ls-remote` | 见 worklog 与会话汇报 | 推送后核对 |
 
 **规则加载的实测**：读取 `scripts/check-framework.py` 时，Cursor 自动附加了 `30-server` 和 `40-code-structure` 两条规则，说明 globs 会触发加载；但附加的是会话开始时缓存的**旧版**内容。结合 T-20261026-01 中子代理的实测，可以确认：**新规则必须在新会话中才会生效**。
 
@@ -79,11 +83,11 @@
 
 - **结果**：验收标准 1–5 全部满足。
 - **回退办法**：`git revert -m 1 <本任务的合并提交>`。规则回到 `.cursor/rules/` 为源的旧结构，可以参考 v0.2.0。
+- **已由用户决定并完成**：合并、打标签 v0.2.1 并推送；SSH 改用 FQDN（Q10）。
 - **待用户处理的事项**：
-  1. 是否推送；
-  2. Q10：是否把 SSH 配置改为 FQDN；
-  3. 复核 ADR-0006；
-  4. 新开一个 Cursor 会话，验证规则加载。
+  1. 复核 ADR-0006；
+  2. 新开一个 Cursor 会话，验证规则加载；
+  3. 回退 SSH 配置的方法：`cp -p /ai/workspace/.ssh/config.bak-20261026 /ai/workspace/.ssh/config`。
 - **下一步**：M1 数据层（见 current-status）。
 - **记录同步**：CHANGELOG [x] · current-status [x] · worklog [x] · ai-use-log [x] · experiments.csv（无运行，不涉及）。
 - **人工复核**：pending。
