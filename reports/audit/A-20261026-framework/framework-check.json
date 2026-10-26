@@ -41,6 +41,11 @@
    "detail": ""
   },
   {
+   "check": "exists:.cursorignore",
+   "ok": true,
+   "detail": ""
+  },
+  {
    "check": "exists:.gitattributes",
    "ok": true,
    "detail": ""
@@ -746,6 +751,6 @@
    "detail": ""
   }
  ],
- "passed": 149,
+ "passed": 150,
  "failed": 0
 }

@@ -35,8 +35,9 @@ python3 reports/audit/A-20261026-framework/audit_probe.py        # 132 PASS / 0 
 ## 写入者与授权
 
 - 当前写入者：无（T-20261026-01 结束时已释放 `.agent-lock`）。
-- GitHub 推送：2026-10-26 用户在 T-20261026-01 中明确要求推送。**没有常设推送授权**，以后每次推送都要确认。
+- GitHub 推送：2026-10-26 用户在 T-20261026-01 中明确要求推送。origin/main 与标签 `v0.2.0`、`archive/legacy-scaffold` 都已推送，并用 ls-remote 核对过。**没有常设推送授权**，以后每次推送都要确认。
 - 仓库可见性：**公开**，与课程"每组一个私有仓库"的要求不符，由学生处理（Q3）。
+- 已知问题：学校环境解析 github.com 偶尔失败，重试即可（environment.md §1）。
 
 ## 最近的任务与运行
 
@@ -50,13 +51,13 @@ python3 reports/audit/A-20261026-framework/audit_probe.py        # 132 PASS / 0 
 ## 阻塞与待决事项（详见 docs/sources-and-open-questions.md）
 
 1. **Q3 仓库可见性**：在 GitHub 的 Settings 中改为 Private，并添加课程人员与组员。
-2. **`.cursorignore` 未创建**：Cursor 的权限配置禁止代理写这个文件。拟定的内容见任务卡 T-20261026-01，需要用户授权或手动创建。
-3. **Q8 项目外暂存件**：`/ai/workspace/_gh_AIE1903/`、`_merge_stage/`、`AIE1903_premerge_code.tgz`、`aie1903_merged_code.tgz` 已核实与 Git 历史重复，等待学生确认是否删除。
-4. **Q5 Claude Code 与 Grokbot 的运行模式**：待学生决定，推荐模式 B（environment.md §4）。
-5. **Q4 sample 末行疑似含真值**：是否反馈给课程方，由学生决定。
-6. **Q6 团队信息**：组员名单和分工待填（README）。
-7. **待复核**：ADR-0002 与 ADR-0003 待学生确认。
-8. **规则加载**：需要在新的 Cursor 会话和真实的 Claude Code 会话中各验证一次（方法见任务卡）。
+2. **Q5 Claude Code 与 Grokbot 的运行模式**：待学生决定，推荐模式 B（environment.md §4）。
+3. **Q4 sample 末行疑似含真值**：是否反馈给课程方，由学生决定。
+4. **Q6 团队信息**：组员名单和分工待填（README）。
+5. **待复核**：ADR-0002 与 ADR-0003 待学生确认。
+6. **规则加载**：需要在新的 Cursor 会话和真实的 Claude Code 会话中各验证一次（方法见任务卡）。
+
+已解决：`.cursorignore` 已由用户授权创建；项目外的 4 个暂存件已由用户授权删除（Q8）。
 
 ## 下一步（可以直接开工）
 

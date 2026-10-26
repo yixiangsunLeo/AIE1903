@@ -1,0 +1,33 @@
+# Keeps secrets and bulk files out of Cursor's indexing and default context.
+# It does NOT stop terminal or MCP tools from reading files; the data and secret rules still apply.
+# Never ignore AGENTS.md, CLAUDE.md, SOUL.md, .cursor/rules/, docs/ or configs/.
+
+# Secrets
+**/.env
+**/.env.*
+!**/.env.example
+**/*.pem
+**/*.key
+**/id_rsa*
+**/id_ed25519*
+.ssh/
+.agent-lock
+
+# Bulk data and generated outputs (inspect them through audit programs, not context)
+data/raw/
+data/interim/
+data/processed/
+runs/
+submissions/**/*.csv
+artifacts/models/
+logs/
+backups/
+
+# Environments and caches
+.venv/
+**/__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# NFS junk created by the storage layer
+**/.!!!*

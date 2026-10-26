@@ -22,6 +22,8 @@
 export GIT_SSH_COMMAND="ssh -F /ai/workspace/.ssh/config -o UserKnownHostsFile=/ai/workspace/.ssh/known_hosts"
 ```
 
+学校环境解析 `github.com` 偶尔会失败，报 "Could not resolve hostname"。2026-10-26 遇到两次，重试即可成功。不要因此修改 DNS 或网络配置。
+
 ## 2. 实测环境（2026-10-26，证据：reports/audit/A-20261026-framework/environment.json）
 
 | 项 | 实测值 | 说明 |
@@ -65,5 +67,5 @@ python3 -m venv --system-site-packages .venv          # 换了镜像或 Python �
 ## 5. 持久化与 NFS
 
 - 代码、数据、`.git`、`.cursor`、`.claude`、密钥、有价值的运行产物，**只能**放在 `/ai/workspace` 下。
-- 存储层会在新建的目录里自动生成 `.!!!*` 文件（8 KB 左右，扩展名随机）。忽略它们（`.gitignore` 已写入，`.cursorignore` 的拟定内容里也有），**不要删除、移动或修改**，也不要批量删除整个目录。
+- 存储层会在新建的目录里自动生成 `.!!!*` 文件（8 KB 左右，扩展名随机）。忽略它们（`.gitignore` 和 `.cursorignore` 都已写入），**不要删除、移动或修改**，也不要批量删除整个目录。
 - 不清空整块存储盘；工作只在 `AIE1903/` 内进行。

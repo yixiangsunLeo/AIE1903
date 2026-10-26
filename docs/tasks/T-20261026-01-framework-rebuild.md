@@ -39,12 +39,14 @@
   - 缺少 pytest、ruff、sklearn；
   - 学校环境没有 node 和 claude；
   - 没有正在运行的作业。
-- **项目外**：`/ai/workspace/_gh_AIE1903/`、`_merge_stage/` 和两个 tgz 都是合并时留下的暂存件，内容已核实被 Git 历史完全覆盖。按约束，项目外的文件没有动。
+- **项目外**：`/ai/workspace/_gh_AIE1903/`、`_merge_stage/` 和两个 tgz 都是合并时留下的暂存件，内容已核实被 Git 历史完全覆盖。按约束，先没有动它们，等用户确认。
 
 ## 依赖与授权
 
 - 推送 GitHub：用户在本任务中明确要求推送。
-- 删除项目外的暂存件、创建 `.cursorignore`：需要用户确认，见"收尾与交接"。
+- 22:12 用户通过提问表单授权两件事：
+  1. 由终端创建 `.cursorignore`，并提交推送；
+  2. 删除项目外的 4 个暂存件。
 
 ## 预算
 
@@ -85,8 +87,12 @@ CPU，短时运行（单次审计不超过 3 秒），没有使用 GPU，没有�
 | `.venv/bin/python -m pytest` | 0 | 19 passed（9 个功能区的导入与说明检查、9 个契约章节检查、1 个版本一致性检查） | `tests/test_layout.py` |
 | `.venv/bin/ruff check . && .venv/bin/ruff format --check .` | 0 | 通过（第一次运行时 architecture.md 中的示例代码需要格式化，已修正） | — |
 | 在 `/tmp/hooktest` 临时仓库里测试 hooks | — | commit-msg：3 个正例放行、5 个反例被拒、中文标题放行；pre-commit：合法组合放行，原始 CSV、runs、提交 CSV、`.env`、NFS 垃圾文件、私钥、大于 2MB 的文件共 7 类被拦截，hook 文件本身不误报 | 本卡 |
-| `.venv/bin/python reports/audit/A-20261026-framework/framework_check.py` | 0 | 结果见 `framework-check.json` 和审计 README | `framework-check.json` |
-| 推送并用 `git ls-remote origin` 核对 | 见 worklog | 见 worklog 中推送后的那一条 | `docs/worklog/2026-10.md` |
+| `.venv/bin/python reports/audit/A-20261026-framework/framework_check.py` | 0 | 150/150 通过（加入 `.cursorignore` 后） | `framework-check.json` |
+| 在真实仓库中用不合规的提交信息执行 `git commit --allow-empty -m "update stuff"` | 1 | 被 commit-msg 拒绝，HEAD 不变 | 本卡 |
+| 第一次推送：`git push origin main` 及两个标签，再执行 `git ls-remote origin` | 0 | 第一次尝试 DNS 解析失败，重试成功；远端 main 与 `v0.2.0^{}` 都是 f91a1f5，`archive/legacy-scaffold^{}` 是 203a73b，与本地一致 | worklog |
+| `.cursorignore` 语义测试：在临时仓库里把它当作 `.gitignore` 执行 check-ignore | — | 密钥、原始数据、runs、提交 CSV、venv、缓存、`.!!!*` 都被排除；规则、文档、配置、checksum、提交 JSON 都可见 | 本卡 |
+| 删除项目外的 4 个暂存件（已授权），删除前再次确认 cf8bdad 在 main 的历史中 | 0 | `/ai/workspace` 下只剩 `.ssh/` 和 `AIE1903/` | worklog |
+| 第二次推送（本次补充合并） | 见会话汇报 | 推送后用 `git ls-remote` 核对；下一个会话开工时用 `git status -sb` 复核 | 会话汇报 |
 
 **规则加载的实测（本会话内）**：
 
@@ -105,13 +111,15 @@ CPU，短时运行（单次审计不超过 3 秒），没有使用 GPU，没有�
 | 分类 | 内容 |
 |---|---|
 | **已有并验证可用** | GitHub SSH 认证；cell_217 与 cell_30 的原始数据（逐字节一致）；学校持久盘 |
-| **本轮新增或修复，并已验证** | grid_273 数据；checksum 文件；数据合同审计；SOUL、AGENTS、CLAUDE 与规则（静态检查）；功能区骨架（pytest）；hooks（正反例）；venv（pip、pytest、ruff）；记录体系与模板；`.gitignore`（check-ignore 检查，见 framework-check） |
+| **本轮新增或修复，并已验证** | grid_273 数据；checksum 文件；数据合同审计；SOUL、AGENTS、CLAUDE 与规则（静态检查）；功能区骨架（pytest）；hooks（正反例）；venv（pip、pytest、ruff）；记录体系与模板；`.gitignore`（check-ignore 检查，见 framework-check）；`.cursorignore`（经授权创建，语义已测试）；GitHub 推送（ls-remote 核对一致） |
 | **存在但未验证** | 新会话中规则的实际加载、Claude Code 的加载（原因见上）；Grokbot 运行手册还没有被 Grokbot 实际执行过 |
-| **缺失且阻塞** | `.cursorignore`（权限受限，需要用户授权）；GitHub 仓库是否改为私有（需要学生操作） |
+| **缺失且阻塞** | GitHub 仓库目前公开，与课程"私有仓库"的要求不符（需要学生在 GitHub 上操作） |
 | **按用户指令推迟** | 交接文档 §11 的可运行流程，即真实回测与 289 步预测 → roadmap M1–M8 |
 | **可选，未做** | grid_273 的建模、大模型实验、`.claude/settings.json` 的权限加固（Claude Code 无法在本环境中验证，所以暂不加入未经验证的配置） |
 
-## `.cursorignore`（拟定内容，待用户授权后创建）
+## `.cursorignore`（22:13 经用户授权，由终端创建；内容如下）
+
+Cursor 的 Write 工具对这个文件返回 "Blocked by permissions configuration"，所以没有绕过，而是先请求授权，再由终端写入。
 
 ```gitignore
 # Keeps secrets and bulk files out of Cursor's indexing and default context.
@@ -143,19 +151,19 @@ backups/
 
 ## 收尾与交接
 
-- **结果**：框架 v0.2.0 完成；验收标准 1–6 已经满足；第 7 项见推送记录。
+- **结果**：框架 v0.2.0 完成，验收标准 1–7 全部满足。第 7 项的依据是第一次推送后 `ls-remote` 核对一致；第二次推送的核对见会话汇报。
 - **回退办法**：
   - 查看旧状态：`git worktree add /tmp/aie1903-legacy archive/legacy-scaffold`。**不要**在主工作树里检出旧提交，原因见 git-workflow §5.1。
   - 撤销合并：`git revert -m 1 <merge>`，不需要改写历史。
 - **执行中的事故**：合并前我曾在主工作树中切换到旧的 `main`，再合并回来，导致两份取消跟踪的 PDF 被 git 从磁盘删除。`sha256sum -c` 立刻发现了问题；已从 `archive/legacy-scaffold` 恢复，blob 与官方一致，13/13 校验 OK。防范办法已写入 git-workflow §5.1 和 data/README.md 的"恢复"一节。
+- **已由用户决定并完成**：`.cursorignore` 已创建；项目外的 4 个暂存件已删除。
 - **待用户处理的事项**：
-  1. 授权创建 `.cursorignore`，或者手动创建；
-  2. 确认是否删除项目外的 4 个暂存件；
-  3. 把仓库改为私有，并添加课程人员与组员；
-  4. 复核 ADR-0002 与 ADR-0003；
-  5. 决定 Claude Code 的运行模式；
-  6. 决定是否向课程方反馈 sample 问题；
-  7. 填写团队信息。
+  1. 把仓库改为私有，并添加课程人员与组员；
+  2. 复核 ADR-0002 与 ADR-0003；
+  3. 决定 Claude Code 的运行模式；
+  4. 决定是否向课程方反馈 sample 问题；
+  5. 填写团队信息；
+  6. 新开一个 Cursor 会话，验证规则是否加载。
 - **下一步**：M1 数据层（见 current-status 的"下一步"）。
 - **记录同步**：CHANGELOG [x] · current-status [x] · worklog [x] · ai-use-log [x] · experiments.csv [x]（已登记 legacy 行）。
 - **人工复核**：pending。
