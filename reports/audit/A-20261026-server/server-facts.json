@@ -1,0 +1,291 @@
+{
+ "audit_id": "A-20261026-server",
+ "task_id": "T-20261026-02",
+ "captured_at": "2026-10-26T22:26:06+08:00",
+ "platform": {
+  "hostname": "ai",
+  "kernel": "5.15.0-186-generic",
+  "os": "Ubuntu 24.04.4 LTS",
+  "container_pid1": "/bin/bash /usr/local/bin/run.sh",
+  "kubernetes_pod": true,
+  "service_account_mounted": true,
+  "image": {
+   "nvidia_pytorch_container": "26.05",
+   "build_id": "313520559"
+  },
+  "boot_time": "2026-10-26 18:56:09",
+  "timezone_localtime": "/usr/share/zoneinfo/Asia/Shanghai",
+  "user": "root",
+  "home": "/root",
+  "safe_env": {
+   "CUDA_DRIVER_VERSION": "595.58.03",
+   "CUDA_MODULE_LOADING": "LAZY",
+   "CUDA_VERSION": "13.2.1.009",
+   "CUDNN_VERSION": "9.22.0.52",
+   "JUPYTER_PORT": "8888",
+   "LANG": "C.UTF-8",
+   "LC_ALL": "C.UTF-8",
+   "NCCL_VERSION": "2.30.4",
+   "NVIDIA_DRIVER_CAPABILITIES": "compute,utility,video",
+   "NVIDIA_PYTORCH_VERSION": "26.05",
+   "NVIDIA_VISIBLE_DEVICES": "void",
+   "PIP_BREAK_SYSTEM_PACKAGES": "1",
+   "PIP_CONSTRAINT": "/etc/pip/constraint.txt",
+   "PIP_DEFAULT_TIMEOUT": "100",
+   "PYTORCH_BUILD_VERSION": "2.12.0a0+5aff392",
+   "PYTORCH_VERSION": "2.12.0a0+5aff392",
+   "SVC_RESOURCE_MASTER_SERVICE_PORT_JUPYTER": "8888",
+   "SVC_RESOURCE_MASTER_SERVICE_PORT_SSH": "22",
+   "TENSORBOARD_PORT": "6006",
+   "TORCH_ALLOW_TF32_CUBLAS_OVERRIDE": "1",
+   "TORCH_CUDA_ARCH_LIST": "7.5 8.0 8.6 9.0 10.0 12.0+PTX",
+   "TRT_VERSION": "10.16.1.11"
+  },
+  "env_var_names_count": 160
+ },
+ "cgroup": {
+  "version": "cgroup2fs",
+  "cpu.max": "2400000 100000",
+  "cpu.weight": "938",
+  "cpuset.cpus.effective": "0-255",
+  "cpuset.mems.effective": "0-1",
+  "memory.max": "34359738368",
+  "memory.high": "max",
+  "memory.swap.max": "0",
+  "memory.current": "1696550912",
+  "memory.peak": null,
+  "pids.max": "618131",
+  "pids.current": "204",
+  "cpu_quota_cores": 24.0,
+  "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0",
+  "cpu.stat_throttling": "nr_periods 63511 nr_throttled 29 throttled_usec 75849268"
+ },
+ "cpu_memory": {
+  "cpu_model": "AMD EPYC 9534 64-Core Processor",
+  "logical_cpus_visible": 256,
+  "sched_affinity_cpus": 256,
+  "lscpu": "Thread(s) per core:                      2\nCore(s) per socket:                      64\nSocket(s):                               2\nNUMA node(s):                            2\nNUMA node0 CPU(s):                       0-63,128-191\nNUMA node1 CPU(s):                       64-127,192-255",
+  "meminfo_virtualized_by_lxcfs": true,
+  "meminfo_total_kb": "33554432",
+  "swap_total_kb": "0",
+  "ulimit": "max locked memory           (kbytes, -l) 64\nopen files                          (-n) 1048576\nmax user processes                  (-u) unlimited"
+ },
+ "storage": {
+  "persistent_project_volume": {
+   "mount": "/ai/workspace",
+   "type": "nfs",
+   "options": "rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=x,mountvers=3,mountport=2050,mountproto=udp,local_lock=none,addr=x",
+   "usage": {
+    "total_gib": 253522.5,
+    "free_gib": 218315.9
+   }
+  },
+  "container_root_overlay": {
+   "usage": {
+    "total_gib": 3519.8,
+    "free_gib": 3269.0
+   },
+   "persistent": false
+  },
+  "dev_shm": {
+   "usage": {
+    "total_gib": 251.7,
+    "free_gib": 251.7
+   },
+   "note": "tmpfs; pages count against cgroup memory.max"
+  },
+  "tmp_on_overlay": "overlay",
+  "ephemeral_paths_in_use": {
+   "cursor_server": true,
+   "cursor_agent_transcripts": true,
+   "pip_cache": true,
+   "torch_hub_cache": false,
+   "hf_cache": false
+  },
+  "nfs_junk_files_at_workspace_root": 8
+ },
+ "processes": {
+  "tools_available": {
+   "tmux": false,
+   "screen": false,
+   "nohup": true,
+   "setsid": true,
+   "timeout": true,
+   "nice": true,
+   "ionice": true,
+   "taskset": true,
+   "numactl": true,
+   "flock": true,
+   "watch": true,
+   "top": true,
+   "htop": false,
+   "nvtop": false,
+   "git": true,
+   "git-lfs": false,
+   "rsync": false,
+   "curl": true,
+   "wget": true,
+   "jq": true,
+   "zip": false,
+   "unzip": true,
+   "make": true,
+   "gcc": true,
+   "nvcc": true,
+   "cmake": true,
+   "sqlite3": false,
+   "lsof": false,
+   "ss": false,
+   "docker": false,
+   "kubectl": false,
+   "sbatch": false,
+   "conda": false,
+   "uv": false,
+   "node": false,
+   "claude": false,
+   "tensorboard": true,
+   "jupyter": true
+  },
+  "job_scheduler": null,
+  "listening_tcp_ports": [
+   22,
+   8888,
+   42805,
+   44145
+  ],
+  "services_from_entrypoint": [
+   "sshd (port 22)",
+   "jupyter notebook (port 8888, cwd /ai)",
+   "tensorboard only if TENSORBOARD_LOG_DIR set at start"
+  ],
+  "sshd_permit_root_login": "PermitRootLogin yes",
+  "user_processes_snapshot": "727 root     441077161-02:53:52 sshd\n    790 root     441077161-02:53:52 jupyter-noteboo\n    791 root     441077161-02:53:52 sleep\n  17873 root     441077161-01:07:12 MainThread\n  17931 root     441077161-01:07:12 MainThread\n  18047 root     441077161-01:07:12 MainThread\n  18935 root     441077161-01:05:04 sshd\n  19166 root     441077161-01:05:04 MainThread\n  19167 root     441077161-01:05:04 MainThread\n  19235 root     441077161-01:05:04 MainThread\n  27312 root     441077160-23:57:52 MainThread\n  36872 root     441077160-23:23:44 sleep\n  36893 root     441077160-23:23:44 python\n  37028 root     441077160-23:23:44 sleep\n  37169 root     441077160-23:23:44 tail"
+ },
+ "network": {
+  "resolv_conf": {
+   "nameserver": [
+    "169.254.20.10"
+   ],
+   "ndots": [
+    "5"
+   ],
+   "search_domains": 3
+  },
+  "ipv6_connectivity": false,
+  "proxy_env_set": false,
+  "dns_github": {
+   "lookups": 50,
+   "failures": 3,
+   "avg_ms": 0.73
+  },
+  "reachability": {
+   "https://github.com": "200 0.307123",
+   "https://api.github.com/zen": "403 0.132849",
+   "https://pypi.org/simple/pip/": "200 0.232667",
+   "https://mirrors.aliyun.com/pypi/simple/pip/": "200 0.072211",
+   "https://pypi.tuna.tsinghua.edu.cn/simple/pip/": "fail",
+   "https://download.pytorch.org/whl/": "200 0.076488",
+   "https://huggingface.co": "200 0.091174",
+   "https://hf-mirror.com": "200 0.443966"
+  },
+  "github_ssh": "1"
+ },
+ "gpu": {
+  "nvidia_smi": "NVIDIA GeForce RTX 5090, 610.43.03, 32607 MiB, 575.00 W, Enabled, Default, 3090 MHz, 5, 16",
+  "cuda_umd_version": "13.3",
+  "gpu_numa_affinity": "0-63,128-191 0",
+  "running_compute_apps": "",
+  "nvcc": "Build cuda_13.2.r13.2/compiler.37668154_0",
+  "cuda_home": "/usr/local/cuda-13.2"
+ },
+ "python": {
+  "executable": "/ai/workspace/AIE1903/.venv/bin/python",
+  "version": "3.12.3",
+  "system_python": "/usr/bin/python3",
+  "venv": "/ai/workspace/AIE1903/.venv",
+  "packages": {
+   "numpy": "2.1.0",
+   "pandas": "3.0.2",
+   "scipy": "1.17.1",
+   "matplotlib": "3.10.9",
+   "yaml": "6.0.1",
+   "sklearn": null,
+   "statsmodels": null,
+   "xgboost": null,
+   "lightgbm": null,
+   "catboost": null,
+   "sktime": null,
+   "darts": null,
+   "gluonts": null,
+   "lightning": null,
+   "pytorch_lightning": null,
+   "transformers": null,
+   "accelerate": null,
+   "optuna": null,
+   "tensorboard": "2.20.0",
+   "wandb": "0.26.1",
+   "mlflow": null,
+   "torch": "2.12.0a0+5aff3928d8.nv26.5.50603568",
+   "torchvision": "0.27.0a0+6214cb20.nv26.5.50603568",
+   "triton": "3.7.0+gitb4e20bb.nv26.5",
+   "flash_attn": "2.7.4.post1+git5231d95fe1.45164347",
+   "transformer_engine": "2.15.0+42b84005",
+   "apex": "0.1",
+   "numba": "0.64.0",
+   "cupy": null,
+   "pyarrow": "24.0.0",
+   "polars": null,
+   "threadpoolctl": null,
+   "ipykernel": "7.2.0",
+   "jupyterlab": "4.5.7",
+   "notebook": "7.5.6",
+   "psutil": "7.2.2",
+   "tqdm": "4.67.3",
+   "pytest": "9.1.1",
+   "ruff": "0.17.2"
+  },
+  "pip_constraint_file_entries": 0,
+  "jupyter_kernels": [
+   "python3"
+  ]
+ },
+ "torch": {
+  "torch": "2.12.0a0+5aff3928d8.nv26.05",
+  "torch_cuda": "13.2",
+  "cuda_available": true,
+  "cudnn": 92200,
+  "num_threads_default": 128,
+  "num_interop_threads_default": 128,
+  "numpy_blas": {
+   "name": "scipy-openblas",
+   "found": true,
+   "version": "0.3.27",
+   "detection method": "pkgconfig",
+   "include directory": "/opt/_internal/cpython-3.12.4/lib/python3.12/site-packages/scipy_openblas64/include",
+   "lib directory": "/opt/_internal/cpython-3.12.4/lib/python3.12/site-packages/scipy_openblas64/lib",
+   "openblas configuration": "OpenBLAS 0.3.27  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64",
+   "pc file directory": "/project/.openblas"
+  },
+  "tf32_matmul_default": true,
+  "tf32_cudnn_default": true,
+  "float32_matmul_precision": "high",
+  "device_name": "NVIDIA GeForce RTX 5090",
+  "capability": [
+   12,
+   0
+  ],
+  "arch_list": [
+   "sm_75",
+   "sm_80",
+   "sm_86",
+   "sm_90",
+   "sm_100",
+   "sm_120",
+   "compute_120"
+  ],
+  "bf16_supported": true,
+  "nccl": "2.30.4",
+  "total_memory_gib": 31.4,
+  "sm_count": 170,
+  "flash_sdp_enabled": true
+ }
+}

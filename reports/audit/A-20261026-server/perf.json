@@ -1,0 +1,105 @@
+{
+ "audit_id": "A-20261026-server",
+ "task_id": "T-20261026-02",
+ "captured_at": "2026-10-26T22:28:14+08:00",
+ "cpu_quota_cores": 24,
+ "numpy_matmul_float64_n3000": [
+  {
+   "threads_env": "1",
+   "gflops": 56.7,
+   "effective_threads": null,
+   "wall_s": 4.0,
+   "throttled_periods": 0,
+   "throttled_s": 0.0,
+   "error": null
+  },
+  {
+   "threads_env": "8",
+   "gflops": 398.2,
+   "effective_threads": null,
+   "wall_s": 0.73,
+   "throttled_periods": 0,
+   "throttled_s": 0.0,
+   "error": null
+  },
+  {
+   "threads_env": "16",
+   "gflops": 656.7,
+   "effective_threads": null,
+   "wall_s": 0.51,
+   "throttled_periods": 0,
+   "throttled_s": 0.0,
+   "error": null
+  },
+  {
+   "threads_env": "24",
+   "gflops": 995.3,
+   "effective_threads": null,
+   "wall_s": 0.4,
+   "throttled_periods": 1,
+   "throttled_s": 0.04,
+   "error": null
+  },
+  {
+   "threads_env": "default",
+   "gflops": 710.5,
+   "effective_threads": null,
+   "wall_s": 0.53,
+   "throttled_periods": 5,
+   "throttled_s": 10.58,
+   "error": null
+  }
+ ],
+ "torch_cpu_matmul_float64_n3000": [
+  {
+   "threads_env": "8",
+   "gflops": 391.0,
+   "effective_threads": 8,
+   "wall_s": 2.26,
+   "throttled_periods": 0,
+   "throttled_s": 0.0,
+   "error": null
+  },
+  {
+   "threads_env": "24",
+   "gflops": 993.3,
+   "effective_threads": 24,
+   "wall_s": 1.96,
+   "throttled_periods": 1,
+   "throttled_s": 0.0,
+   "error": null
+  },
+  {
+   "threads_env": "default",
+   "gflops": 329.8,
+   "effective_threads": 128,
+   "wall_s": 2.31,
+   "throttled_periods": 6,
+   "throttled_s": 51.76,
+   "error": null
+  }
+ ],
+ "storage": [
+  {
+   "location": "nfs:/ai/workspace (project logs/)",
+   "write_mib_s_with_fsync": 1018.8,
+   "read_direct_dd": "268435456 bytes (268 MB, 256 MiB) copied, 0.248415 s, 1.1 GB/s",
+   "small_file_create_ms": 1.153,
+   "small_file_stat_ms": 0.021
+  },
+  {
+   "location": "overlay:/tmp (ephemeral)",
+   "write_mib_s_with_fsync": 938.8,
+   "read_direct_dd": "268435456 bytes (268 MB, 256 MiB) copied, 0.0465867 s, 5.8 GB/s",
+   "small_file_create_ms": 0.051,
+   "small_file_stat_ms": 0.006
+  },
+  {
+   "location": "tmpfs:/dev/shm (RAM, counts toward memory limit)",
+   "write_mib_s_with_fsync": 3233.0,
+   "read_direct_dd": "dd: failed to open '/dev/shm/iotest-6g3ffmmm/blob.bin': Invalid argument",
+   "small_file_create_ms": 0.022,
+   "small_file_stat_ms": 0.005
+  }
+ ]
+}
