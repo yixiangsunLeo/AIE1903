@@ -1,0 +1,47 @@
+# secrets / env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_ed25519*
+!*.pub.example
+
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# notebooks / IDE
+.ipynb_checkpoints/
+.idea/
+.vscode/
+*.swp
+
+# model weights / large artifacts
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.onnx
+*.pkl
+*.joblib
+runs/**/checkpoints/
+runs/**/*.csv
+!runs/.gitkeep
+
+# raw competition CSVs (keep PDFs/docs); re-download from official repo
+data/raw/**/*.csv
+
+# NFS junk on school disk
+.!!!*
+
+# OS
+.DS_Store
+Thumbs.db

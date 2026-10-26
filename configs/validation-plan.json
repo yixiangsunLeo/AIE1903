@@ -1,0 +1,46 @@
+{
+  "name": "aie1903-chronological-289",
+  "day_cycle": 288,
+  "forecast_horizon": 289,
+  "primary_dataset": "cell_217",
+  "dry_run_dataset": "cell_30",
+  "baseline": "seasonal_naive_daily_cycle",
+  "metrics": [
+    "mae",
+    "rmse",
+    "mape",
+    "masked_mape_3e5",
+    "masked_mape_1e6"
+  ],
+  "notes": [
+    "No future leakage: train fold uses only rows strictly before each holdout window.",
+    "Official test is 289 steps (1 day + 5 min). Day cycle is 288.",
+    "Holdouts are carved from the 1728-row train table only (no test labels).",
+    "For a 289-step window ending at index e (exclusive), history is rows [0, e-289).",
+    "Last train day (rows 1440:1728) is the natural seasonal-naive source for official test.",
+    "When fitting a 289-step holdout inside 1728 rows, the final step wraps TOD via h % 288."
+  ],
+  "folds": [
+    {
+      "id": "fold_day4",
+      "history_end": 1152,
+      "holdout_start": 1152,
+      "holdout_end": 1441,
+      "description": "Predict rows [1152,1441) using history [0,1152)."
+    },
+    {
+      "id": "fold_day5",
+      "history_end": 1440,
+      "holdout_start": 1440,
+      "holdout_end": 1728,
+      "description": "Predict rows [1440,1728) (288 steps) using history [0,1440); truncate horizon to available labels."
+    },
+    {
+      "id": "fold_last289",
+      "history_end": 1439,
+      "holdout_start": 1439,
+      "holdout_end": 1728,
+      "description": "Predict last 289 train rows [1439,1728) using history [0,1439)."
+    }
+  ]
+}
