@@ -70,7 +70,8 @@
 | 数据层 | 在真实数据上跑合同测试；校验 checksum；跨数据集读取被拒绝 |
 | 最终预测 | `validate-submission` 与 test.csv 逐项一致 |
 | 记录、tracking | 失败运行不会被标为成功；输出严格 JSON；`verify-records` |
-| 文档、规则 | 引用的路径真实存在；规则 frontmatter 能解析；globs 匹配真实文件 |
+| 文档、规则 | 引用的路径真实存在；规则只改 `rules/`，然后运行 `scripts/sync-rules.sh`，并确认 `--check` 通过；frontmatter 能解析；globs 与 paths 一致且能匹配到真实文件 |
+| 服务器或环境相关 | 用 `reports/audit/A-20261026-server/server_probe.py` 复测；事实有变化时，先更新审计和 environment.md，再改规则 |
 
 每次提交前都要执行：`.venv/bin/python -m pytest` 和 `.venv/bin/ruff check .`。静态检查通过，不等于程序真的运行过，两者要分开写。
 

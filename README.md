@@ -2,11 +2,11 @@
 
 这是 CUHK-SZ AIE1903 的课程项目（授课教师 Feng Yin）：用 6 天历史（1728 个 5 分钟点），一次性预测接下来的 289 个点。主线是 **cell_217**；cell_30 只用于流程演练；grid_273 在主线完成后再扩展。
 
-> **English summary.** Course project on wireless uplink traffic forecasting. Framework v0.2.0 is in place: agent rules, record system, functional-area contracts, configs and verified data. The forecasting code is not implemented yet (see `docs/roadmap.md`).
+> **English summary.** Course project on wireless uplink traffic forecasting. Framework v0.2.1 is in place: agent rules (single source in `rules/`, readable by any agent), server survey, record system, functional-area contracts, configs and verified data. The forecasting code is not implemented yet (see `docs/roadmap.md`).
 
 ## 当前状态
 
-- **阶段**：框架 v0.2.0 已完成，功能代码和训练都还没有开始。下一步是 roadmap 的 M1（数据层）。
+- **阶段**：框架 v0.2.1 已完成（含服务器摸底与训练手册），功能代码和训练都还没有开始。下一步是 roadmap 的 M1（数据层）。
 - **数据**：三个官方数据集共 13 个文件，全部齐全，并与官方仓库提交 `49822d8` 逐字节一致（审计 `reports/audit/A-20261026-framework/`）。
 - 实时状态、阻塞和下一步见 [`docs/current-status.md`](docs/current-status.md)。
 
@@ -15,7 +15,7 @@
 | 你是 | 建议的阅读顺序 |
 |---|---|
 | 学生、组员 | 本文件 → `docs/current-status.md` → `docs/project-context.md` → `docs/roadmap.md` |
-| 代理（Cursor / Claude Code / Grokbot） | `AGENTS.md`（Cursor 自动加载）或 `CLAUDE.md`（Claude Code）→ `SOUL.md` → `docs/current-status.md` |
+| 代理（Cursor / Claude Code / Grokbot / 其他） | `AGENTS.md`（Cursor 和多数代理自动加载）或 `CLAUDE.md`（Claude Code）→ `SOUL.md` → `rules/` 全部规则 → `docs/current-status.md` |
 | 课程人员 | 本文件 → `docs/project-context.md` → `docs/ai-use-log.md` |
 
 ## 目录
@@ -25,7 +25,8 @@ AIE1903/
 ├── AGENTS.md · CLAUDE.md · SOUL.md     代理共享约定 · Claude Code 入口 · 项目之魂
 ├── README.md · CHANGELOG.md            说明 · 按任务记录的变更日志
 ├── pyproject.toml · requirements.lock  依赖声明 · 实测版本
-├── .cursor/rules/ · .claude/rules/     Cursor 规则（源文件）· Claude Code 路径规则（符号链接）
+├── rules/                              全部强制规则的唯一源（纯 Markdown，任何代理都能读）
+├── .cursor/rules/ · .claude/rules/     由 scripts/sync-rules.sh 生成的 Cursor 副本 · Claude Code 符号链接
 ├── .githooks/ · .gitmessage            提交规范检查 · 提交信息模板
 ├── configs/       数据集注册表与数据合同、验证协议、运行预算、实验配置模板
 ├── data/          raw/（官方原始文件，不进 Git）· checksums.sha256

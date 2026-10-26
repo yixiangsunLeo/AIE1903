@@ -55,5 +55,5 @@ tar -czf "backups/records-$stamp.tar.gz" runs logs 2>/dev/null || true
 cd /ai/workspace/AIE1903 && git status && git log --oneline -3
 (cd data && sha256sum -c checksums.sha256)
 git config --get core.hooksPath        # 应输出 .githooks（这项配置在 .git/config 里，持久保存）
-.venv/bin/python -m pytest             # 如果 .venv 失效（比如换了镜像），按 environment.md §3 重建
+.venv/bin/python -m pytest             # 如果 .venv 失效（比如换了镜像），按 environment.md §6 重建
 ```
