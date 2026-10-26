@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-10-26T21:41:16+08:00",
+  "hostname": "ai",
+  "os": "Ubuntu 24.04.4 LTS",
+  "python": {
+    "version": "3.12.3",
+    "executable": "/usr/bin/python3"
+  },
+  "packages": {
+    "numpy": "2.1.0",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9",
+    "yaml": "6.0.1",
+    "torch": "2.12.0a0+5aff3928d8.nv26.05",
+    "sklearn": null,
+    "statsmodels": null,
+    "pytest": null,
+    "ruff": null
+  },
+  "torch_cuda": {
+    "available": true,
+    "torch_cuda": "13.2"
+  },
+  "cpu": {
+    "os_cpu_count": 256,
+    "cgroup_cpu_quota_cores": 24.0
+  },
+  "memory_limit_bytes": 34359738368,
+  "gpu": "NVIDIA GeForce RTX 5090, 32607 MiB, 610.43.03",
+  "project_disk": {
+    "path": "/ai/workspace/AIE1903",
+    "total_bytes": 272217833209856,
+    "free_bytes": 234415154266112
+  },
+  "git": {
+    "branch": "task/T-20261026-01-framework-rebuild",
+    "head": "203a73b484d4c143cdbe30cef28bdc9c2d986ef7",
+    "dirty": true
+  }
+}

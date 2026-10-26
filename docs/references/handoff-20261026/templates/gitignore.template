@@ -1,0 +1,26 @@
+# 审计后合并；不要覆盖已有规则。排除不等于移除已跟踪历史。
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.cache/
+data/raw/
+data/processed/
+runs/
+artifacts/models/
+submissions/*.csv
+# 如课程原件仅本地留存，再启用下一行
+# references/course/
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.*.example
+*.pem
+*.key
+.claude/settings.local.json
+CLAUDE.local.md
+# 不整体忽略docs/和reports/，保留脱敏任务、摘要和关键图

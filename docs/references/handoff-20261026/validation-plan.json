@@ -1,0 +1,19 @@
+{
+  "protocol_id": "expanding_289_v1",
+  "status": "recommended_protocol_not_a_course_requirement",
+  "available_training_rows": 1728,
+  "index_convention": "zero_based_half_open",
+  "horizon_steps": 289,
+  "seasonal_period_steps": 288,
+  "fit_preprocessors_on_each_fold_training_only": true,
+  "supervised_target_end_must_precede_origin": true,
+  "development_folds": [
+    {"id": "dev_a", "train_start": 0, "train_end_exclusive": 861, "validation_start": 861, "validation_end_exclusive": 1150},
+    {"id": "dev_b", "train_start": 0, "train_end_exclusive": 1150, "validation_start": 1150, "validation_end_exclusive": 1439}
+  ],
+  "heldout_fold": {"id": "heldout", "train_start": 0, "train_end_exclusive": 1439, "validation_start": 1439, "validation_end_exclusive": 1728},
+  "heldout_policy": "evaluate_after_model_and_selection_rule_are_frozen; repeated_adaptation_invalidates_untouched_status",
+  "final_fit_end_exclusive": 1728,
+  "final_prediction_steps": 289,
+  "known_limitations": ["six_days_only", "weak_evidence_for_weekday_effects", "short_history_does_not_establish_interval_coverage_guarantees"]
+}

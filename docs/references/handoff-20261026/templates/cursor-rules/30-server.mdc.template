@@ -1,0 +1,16 @@
+---
+description: 学校服务器持久化与有界运行
+globs: "src/**/*.py,scripts/**,configs/**,pyproject.toml,requirements*.txt,requirements*.lock,Makefile"
+alwaysApply: false
+---
+
+使用实测的学校环境；Grokbot管理端的8核/16GB/无GPU不代表学校机器。
+
+- 优先项目隔离环境，不改系统Python、全局CUDA或其他用户配置。
+- CPU/GPU、线程、并行数、时长和内存预算通过配置传入，基础验收默认短CPU流程。
+- 不把全部滑窗×序列×289步×滞后一次展开；分批处理并记录成本。
+- 长任务保存run_id、PID/job_id、命令、日志与持久化路径。
+- 重连先查作业，避免重复启动；持久终端不能抵抗容器回收。
+- 不结束归属不明的进程；不在有其他任务运行时擅自回收资源。
+- 保存并核对产物后释放属于自己的已结束资源，不把关网页当释放。
+- 不打印环境变量全集、密钥或VPN口令；不自动将原始数据发送给外部模型。
