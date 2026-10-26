@@ -45,3 +45,7 @@ data/raw/**/*.csv
 # OS
 .DS_Store
 Thumbs.db
+
+# local data archives
+*.tgz
+cell_217_data.tgz
