@@ -23,12 +23,13 @@
 | Q5 | Claude Code 与 Grokbot 的运行模式：box 克隆加远程执行，还是在学校环境直接运行（environment.md §4） | 指令能否加载；是否只有单一工作树 | 学生 | 待决定；推荐模式 B |
 | Q6 | 组员名单、GitHub 用户名与分工 | 贡献记录；仓库权限 | 学生 | README 的"团队"一节待填 |
 | Q7 | 镜像名是 `jr1903:0.0.1` 还是 `jr/jr1903`（旧文档写法不一致） | 环境重建 | 学生在平台上确认 | 待确认 |
-| Q8 | `/ai/workspace` 下项目之外的暂存件（`_gh_AIE1903/`、`_merge_stage/`、两个 tgz），已核实与 Git 历史重复 | 磁盘整洁 | 学生授权删除 | 见 current-status |
 
 ## 3. 已关闭的问题
 
 | 问题 | 结论 | 证据 |
 |---|---|---|
+| Q8 项目外的暂存件（`_gh_AIE1903/`、`_merge_stage/`、两个 tgz） | 已核实被 Git 历史完全覆盖；2026-10-26 经学生授权删除 | worklog 2026-10-26；任务卡 T-20261026-01 |
+| `.cursorignore` 无法由代理直接写入 | Cursor 的权限配置禁止代理写这个文件；经学生授权，改由终端创建，语义已在临时仓库中测试 | 任务卡 T-20261026-01 |
 | 数据集是否齐全 | 三个数据集共 13 个官方文件齐全，并与官方提交逐字节一致 | A-20261026-framework |
 | GitHub SSH 密钥是否已注册 | 已注册，可以 yixiangsunLeo 身份认证 | 2026-10-26 执行 `ssh -T git@github.com` |
 | `data_description_for_cell_217.pdf.fixed` 是什么 | 与原 PDF 的 sha256 相同，是冗余副本，已删除 | `sha256sum` 比对 |

@@ -32,6 +32,7 @@
   - `.githooks/commit-msg` 和 `.githooks/pre-commit`；
   - `.gitmessage`、`.gitattributes`、`.editorconfig`；
   - 标签 `archive/legacy-scaffold`（指向 203a73b）。
+- **`.cursorignore`**：把密钥、原始数据、运行产物和 venv 排除在 Cursor 的索引之外。Cursor 禁止代理直接写这个文件，所以经学生授权由终端创建。
 - **环境**：
   - 项目 `.venv`（使用 system-site-packages）；
   - `pyproject.toml` 中的依赖与 ruff、pytest 配置；

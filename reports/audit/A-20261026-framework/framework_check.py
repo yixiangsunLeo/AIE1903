@@ -34,7 +34,7 @@ def git(*args: str) -> subprocess.CompletedProcess:
 
 REQUIRED = [
     "AGENTS.md", "CLAUDE.md", "SOUL.md", "README.md", "CHANGELOG.md", "pyproject.toml",
-    "requirements.lock", ".gitignore", ".gitattributes", ".editorconfig", ".env.example",
+    "requirements.lock", ".gitignore", ".cursorignore", ".gitattributes", ".editorconfig", ".env.example",
     ".gitmessage", ".githooks/commit-msg", ".githooks/pre-commit",
     ".cursor/rules/00-project.mdc", ".cursor/rules/10-forecasting.mdc",
     ".cursor/rules/20-records.mdc", ".cursor/rules/30-server.mdc",
