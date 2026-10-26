@@ -1,18 +1,27 @@
-# Runtime profile: device, threads, budgets, seeds, output roots.
-# Code must read these values and actually apply them (thread env vars + torch.set_num_threads).
-# Measured container limits (2026-10-26): 24 CPU cores (cgroup quota; os.cpu_count() reports 256),
-# 32 GiB RAM, 1x RTX 5090 32 GiB. See docs/runbooks/environment.md. These are facts, not budgets.
-schema_version: 1
+# Runtime profile: device, threads, precision, determinism, budgets, seeds, output roots.
+# Code must read these values and actually apply them; every run records the applied values.
+# Facts behind the defaults: reports/audit/A-20261026-server/ (rules/30-server.md, rules/35-training.md).
+schema_version: 2
 profile: default
 
-device: cpu              # cpu | cuda — cuda only when the task card budgets GPU use
-threads: 8               # OMP/MKL/OPENBLAS/NUMEXPR_NUM_THREADS and torch.set_num_threads
+device: cpu              # cpu | cuda; cuda requires a GPU budget approved in the task card
+gpu_index: 0             # single RTX 5090; exported as CUDA_VISIBLE_DEVICES ("" for cpu runs)
+threads: 8               # OMP/OPENBLAS/MKL/NUMEXPR_NUM_THREADS and torch.set_num_threads
+max_threads: 24          # cgroup CPU quota; os.cpu_count() reports 256 and must not be used
 max_parallel_jobs: 1
 seed: 42
 
+precision: fp32_strict   # fp32_strict | tf32 | bf16_autocast; the image enables TF32 by default
+deterministic: true      # torch.use_deterministic_algorithms(True), cudnn.benchmark = False
+
+env:                     # exported for every run (training.md section 2)
+  CUBLAS_WORKSPACE_CONFIG: ":4096:8"
+  PYTHONUNBUFFERED: "1"
+  WANDB_MODE: disabled
+
 budgets:                 # defaults per run; a task card may tighten or, with approval, relax them
-  max_wall_minutes: 30
-  max_memory_gib: 8
+  max_wall_minutes: 30   # enforced with `timeout`; exit code 124 is recorded as status timeout
+  max_memory_gib: 8      # container limit is 32 GiB without swap
   max_gpu_memory_gib: null   # null = GPU not budgeted
 
 outputs:                 # relative to the project root
