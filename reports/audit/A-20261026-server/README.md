@@ -57,6 +57,7 @@
 ### 4. 网络
 
 - **DNS**：使用 NodeLocal DNSCache（169.254.20.10），配置为 `ndots:5`，有 3 个 search 域。`github.com` **偶尔解析失败**，失败成簇出现：一次 50 次查询中失败 3 次，另一次 400 次中失败 1 次。写成 FQDN（`github.com.`）时，400 次查询**零失败**。这解释了 git push 时偶发的 "Could not resolve hostname"。
+  - **更正（22:47，同一任务内补记）**：FQDN 在 `getent` 中零失败，并**不**意味着 SSH 不会失败。把 SSH 配置改为 `HostName github.com.` 后，推送时仍然连续两次报 "Could not resolve hostname github.com."，改回原配置后的首次认证也失败了一次。所以上面"这解释了……"一句只说对了一半：失败来自解析服务本身的偶发错误，与 search 域无关。唯一有效的缓解办法是重试。
 - **没有 IPv6 出网能力**，但 DNS 会对部分域名返回 IPv6 地址。curl 和 Python 会自动回退到 IPv4；个别工具失败时可以强制走 IPv4。
 - **没有代理**。可以访问：GitHub（SSH 认证正常）、api.github.com、PyPI、阿里云 PyPI 镜像（最快）、download.pytorch.org、huggingface.co。清华镜像和 hf-mirror 时通时不通，kaggle 不通。
 
