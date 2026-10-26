@@ -1,30 +1,55 @@
-# secrets / env
+# Secrets and local environment
 .env
 .env.*
 !.env.example
+.venv/
+venv/
+.ssh/
+.secrets/
 *.pem
+*.p12
+*.pfx
 *.key
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*_ed25519
+*_ed25519.pub
 id_ed25519*
-!*.pub.example
 
-# python
+# NFS junk
+.!!!*
+
+# Python / notebook caches
 __pycache__/
 *.py[cod]
 *$py.class
-.venv/
-venv/
 *.egg-info/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-
-# notebooks / IDE
 .ipynb_checkpoints/
-.idea/
-.vscode/
-*.swp
 
-# model weights / large artifacts
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+
+# Data: keep structure, not raw CSVs
+data/raw/**/*.csv
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Large artifacts / weights
+artifacts/models/*
+!artifacts/models/.gitkeep
+artifacts/outputs/*
+!artifacts/outputs/.gitkeep
 *.pt
 *.pth
 *.ckpt
@@ -36,16 +61,8 @@ runs/**/checkpoints/
 runs/**/*.csv
 !runs/.gitkeep
 
-# raw competition CSVs (keep PDFs/docs); re-download from official repo
-data/raw/**/*.csv
-
-# NFS junk on school disk
-.!!!*
-
-# OS
-.DS_Store
-Thumbs.db
-
-# local data archives
+# Archives / logs
 *.tgz
 cell_217_data.tgz
+*.log
+logs/

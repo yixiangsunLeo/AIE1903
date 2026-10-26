@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from aie1903.predict import main as predict_main  # noqa: E402
+from aie1903_project.predict import main as predict_main  # noqa: E402
 
 
 def main() -> None:

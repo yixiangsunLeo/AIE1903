@@ -1,19 +1,4 @@
-"""AIE1903 wireless uplink traffic forecasting utilities."""
+"""Compatibility re-export of aie1903_project."""
 
-__version__ = "0.1.0"
-
-from .metrics import evaluate_all, mae, mape, masked_mape, rmse
-from .baseline import seasonal_naive_predict
-from .data import load_dataset, project_root
-
-__all__ = [
-    "__version__",
-    "evaluate_all",
-    "mae",
-    "mape",
-    "masked_mape",
-    "rmse",
-    "seasonal_naive_predict",
-    "load_dataset",
-    "project_root",
-]
+from aie1903_project import *  # noqa: F403
+from aie1903_project import __version__

@@ -1,0 +1,23 @@
+project:
+  name: aie1903-group-project
+  seed: 42
+
+paths:
+  raw_data: data/raw
+  interim_data: data/interim
+  processed_data: data/processed
+  models: artifacts/models
+  outputs: artifacts/outputs
+  figures: reports/figures
+  tables: reports/tables
+
+data:
+  timestamp_column: null
+  target_columns: []
+
+training:
+  device: auto
+  random_seed: 42
+
+evaluation:
+  metrics: []

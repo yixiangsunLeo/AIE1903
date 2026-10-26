@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from aie1903.data import load_dataset, value_columns  # noqa: E402
+from aie1903_project.data import load_dataset, value_columns  # noqa: E402
 
 
 def audit_one(name: str) -> None:

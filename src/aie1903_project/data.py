@@ -7,16 +7,17 @@ from typing import Literal
 
 import pandas as pd
 
+from .paths import ProjectPaths, project_root as _paths_project_root
+
 DatasetName = Literal["cell_217", "cell_30"]
 
 
 def project_root() -> Path:
-    """Return /ai/workspace/AIE1903 when present, else repo root inferred from this file."""
+    """Prefer persistent school path /ai/workspace/AIE1903 when present."""
     sun = Path("/ai/workspace/AIE1903")
     if sun.is_dir():
         return sun
-    # src/aie1903/data.py -> parents[2] == repo root
-    return Path(__file__).resolve().parents[2]
+    return _paths_project_root()
 
 
 def raw_dir(dataset: DatasetName = "cell_217", root: Path | None = None) -> Path:
@@ -38,7 +39,7 @@ def load_dataset(
 ) -> dict[str, pd.DataFrame]:
     """Load train / test / sample_submission for a dataset folder."""
     d = raw_dir(dataset, root)
-    prefix = dataset  # cell_217 / cell_30
+    prefix = dataset
     paths = {
         "train": d / f"{prefix}_train.csv",
         "test": d / f"{prefix}_test.csv",
@@ -47,8 +48,7 @@ def load_dataset(
     missing = [k for k, p in paths.items() if not p.is_file()]
     if missing:
         raise FileNotFoundError(f"{dataset} missing files {missing} under {d}")
-    out = {k: load_csv(p) for k, p in paths.items()}
-    return out
+    return {k: load_csv(p) for k, p in paths.items()}
 
 
 def value_columns(df: pd.DataFrame) -> list[str]:
@@ -60,3 +60,7 @@ def values_matrix(df: pd.DataFrame):
 
     cols = value_columns(df)
     return df[cols].to_numpy(dtype=np.float64), cols
+
+
+def get_paths(root: Path | None = None) -> ProjectPaths:
+    return ProjectPaths.from_root(root or project_root())

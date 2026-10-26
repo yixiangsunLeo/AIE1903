@@ -1,0 +1,48 @@
+{
+  "dataset": "cell_30",
+  "baseline": "seasonal_naive_daily_cycle",
+  "folds": [
+    {
+      "id": "fold_day4",
+      "history_end": 1152,
+      "holdout_start": 1152,
+      "holdout_end": 1441,
+      "horizon": 289,
+      "metrics": {
+        "mae": 572048.8675893887,
+        "rmse": 1038698.644940224,
+        "mape": 52.45926103927378,
+        "masked_mape_3e5": 45.12845262013075,
+        "masked_mape_1e6": 38.14178786723954
+      }
+    },
+    {
+      "id": "fold_day5",
+      "history_end": 1440,
+      "holdout_start": 1440,
+      "holdout_end": 1728,
+      "horizon": 288,
+      "metrics": {
+        "mae": 593821.1561342593,
+        "rmse": 1104638.4943414251,
+        "mape": 61.35941812234259,
+        "masked_mape_3e5": 46.43603635932958,
+        "masked_mape_1e6": 39.01835648604605
+      }
+    },
+    {
+      "id": "fold_last289",
+      "history_end": 1439,
+      "holdout_start": 1439,
+      "holdout_end": 1728,
+      "horizon": 289,
+      "metrics": {
+        "mae": 594511.8155709342,
+        "rmse": 1103985.5905466056,
+        "mape": 61.31764113111444,
+        "masked_mape_3e5": 46.437323633519384,
+        "masked_mape_1e6": 39.01675661114732
+      }
+    }
+  ]
+}
