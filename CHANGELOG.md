@@ -33,6 +33,7 @@
 - CLAUDE.md、README、grokbot、agent-contract、git-workflow 同步更新。
 - `configs/runtime.yaml` 升到 v2：线程上限 24、精度 `fp32_strict`、确定性、默认环境变量。
 - 修正版本规则与 roadmap 之间的矛盾：框架调整升 patch，里程碑组完成升 minor。
+- **更正（v0.2.1 之后的补充合并）**："GitHub SSH 改用 FQDN 可以规避 DNS 失败"被推送实测证伪，SSH 配置已恢复原样。environment.md、current-status、Q10 和审计 README 都已更正；DNS 失败的唯一缓解办法是重试。
 
 ### 验证
 

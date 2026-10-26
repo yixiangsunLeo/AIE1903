@@ -29,7 +29,7 @@
 
 | 问题 | 结论 | 证据 |
 |---|---|---|
-| Q10 GitHub SSH 是否改用 FQDN 以规避 DNS 偶发失败 | 2026-10-26 经学生授权应用：设置 `HostName github.com.` 和 `HostKeyAlias github.com`，原文件备份为 `config.bak-20261026`，BatchMode 认证 5 次全部成功 | 任务卡 T-20261026-02；environment.md §5 |
+| Q10 GitHub SSH 是否改用 FQDN 以规避 DNS 偶发失败 | **无效，已恢复原状**。经学生授权应用后，BatchMode 认证 5 次全部成功，但推送时仍连续两次解析失败（`github.com.` 同样报 No address）。当天已用备份恢复原配置，并删除备份。结论是 DNS 失败与 search 域无关，只能靠重试 | 任务卡 T-20261026-02；environment.md §5 |
 | Q8 项目外的暂存件（`_gh_AIE1903/`、`_merge_stage/`、两个 tgz） | 已核实被 Git 历史完全覆盖；2026-10-26 经学生授权删除 | worklog 2026-10-26；任务卡 T-20261026-01 |
 | `.cursorignore` 无法由代理直接写入 | Cursor 的权限配置禁止代理写这个文件；经学生授权，改由终端创建，语义已在临时仓库中测试 | 任务卡 T-20261026-01 |
 | 数据集是否齐全 | 三个数据集共 13 个官方文件齐全，并与官方提交逐字节一致 | A-20261026-framework |

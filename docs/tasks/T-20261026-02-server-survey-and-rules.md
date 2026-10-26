@@ -68,7 +68,8 @@
 | `.venv/bin/python -m pytest` | 0 | 19 passed（版本已同步为 0.2.1） |
 | `ruff check` 和 `ruff format --check` | 0 | 通过；新脚本修正了行长和 B905 |
 | SSH 改用 FQDN（已授权）：先备份为 `config.bak-20261026`，再执行 `ssh -G` 和 5 次 BatchMode 的 `ssh -T` | 0 | 生效后 hostname 为 `github.com.`、hostkeyalias 为 `github.com`；5/5 认证成功，没有出现主机密钥提示 |
-| 合并到 main、打标签 v0.2.1、推送，再执行 `git ls-remote` | 见 worklog 与会话汇报 | 推送后核对 |
+| 合并到 main、打标签 v0.2.1、推送 `main` 和 `v0.2.1`，再执行 `git ls-remote` | 0（第 3 次尝试成功） | 远端 main 与 `v0.2.1^{}` 都是 2609a3f，与本地一致。**前两次尝试使用 FQDN 配置，仍然报 "Could not resolve hostname github.com."** |
+| 结论修正与回滚 | 0 | FQDN 不能防止解析失败（假设被证伪）。用备份恢复了原 SSH 配置（逐字节一致），并删除备份。恢复后认证 3 次：第 1 次解析失败，第 2、3 次成功，说明失败与写法无关 |
 
 **规则加载的实测**：读取 `scripts/check-framework.py` 时，Cursor 自动附加了 `30-server` 和 `40-code-structure` 两条规则，说明 globs 会触发加载；但附加的是会话开始时缓存的**旧版**内容。结合 T-20261026-01 中子代理的实测，可以确认：**新规则必须在新会话中才会生效**。
 
@@ -83,11 +84,11 @@
 
 - **结果**：验收标准 1–5 全部满足。
 - **回退办法**：`git revert -m 1 <本任务的合并提交>`。规则回到 `.cursor/rules/` 为源的旧结构，可以参考 v0.2.0。
-- **已由用户决定并完成**：合并、打标签 v0.2.1 并推送；SSH 改用 FQDN（Q10）。
+- **已由用户决定并完成**：合并、打标签 v0.2.1 并推送。
+- **SSH 改用 FQDN（Q10）**：按授权应用后，推送时证实无效，已恢复原配置。现在 `/ai/workspace/.ssh/config` 与任务开始前完全相同。
 - **待用户处理的事项**：
   1. 复核 ADR-0006；
-  2. 新开一个 Cursor 会话，验证规则加载；
-  3. 回退 SSH 配置的方法：`cp -p /ai/workspace/.ssh/config.bak-20261026 /ai/workspace/.ssh/config`。
+  2. 新开一个 Cursor 会话，验证规则加载。
 - **下一步**：M1 数据层（见 current-status）。
 - **记录同步**：CHANGELOG [x] · current-status [x] · worklog [x] · ai-use-log [x] · experiments.csv（无运行，不涉及）。
 - **人工复核**：pending。

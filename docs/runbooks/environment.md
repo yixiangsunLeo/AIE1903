@@ -70,10 +70,10 @@ export GIT_SSH_COMMAND="ssh -F /ai/workspace/.ssh/config -o UserKnownHostsFile=/
 
 ## 5. 网络
 
-- **DNS 偶发失败**：使用 NodeLocal DNSCache，配置 `ndots:5` 并带有 search 域。普通写法 `github.com` 偶尔会解析失败，失败成簇出现，实测失败率在 0% 到 6% 之间；写成 FQDN（`github.com.`）后，400 次查询零失败。
-  - 一般处理：**重试**即可。`git push` 和 `ls-remote` 循环 3–4 次，每次间隔 3 秒。
-  - **GitHub SSH 已改用 FQDN**（2026-10-26 经用户授权）：`/ai/workspace/.ssh/config` 的 `Host github.com` 下设置了 `HostName github.com.` 和 `HostKeyAlias github.com`，原文件备份为 `config.bak-20261026`。修改后用 BatchMode 认证 5 次，全部成功。
-  - 其他域名仍然走 search 域，偶尔失败时重试即可。不要修改系统 DNS 或网络配置。
+- **DNS 偶发失败**：使用 NodeLocal DNSCache，配置 `ndots:5` 并带有 search 域。`github.com` 偶尔会解析失败，报 "No address associated with hostname"。失败成簇出现，实测失败率在 0% 到 6% 之间。
+  - **唯一有效的处理办法是重试**：`git push` 和 `ls-remote` 循环 3–4 次，每次间隔 3 秒。2026-10-26 的几次推送分别在第 2 到第 3 次尝试时成功。
+  - **改用 FQDN 无效**（实测已排除）：`getent` 查询 `github.com.` 时 400 次零失败，但 SSH 配置改用 `HostName github.com.` 后，推送时照样连续两次解析失败。该改动已在当天恢复原状，`/ai/workspace/.ssh/config` 保持原样。
+  - 不要修改系统 DNS、`/etc/hosts` 或网络配置。
 - **没有 IPv6 出网能力**。DNS 会对部分域名返回 IPv6 地址，curl 和 Python 会自动回退到 IPv4；个别工具失败时可以加 `-4` 或设置 `AddressFamily inet`。
 - **没有代理**。可以访问：GitHub（SSH 和 HTTPS）、api.github.com、PyPI、阿里云镜像 `https://mirrors.aliyun.com/pypi/simple/`（实测最快）、download.pytorch.org、huggingface.co。清华镜像和 hf-mirror 不稳定，kaggle 不通。
 - **数据外发规则**：不把原始数据发给外部模型或服务。**wandb 已安装，但不得在线使用**：没有用户授权时，只允许 `WANDB_MODE=disabled` 或 `offline`。
@@ -137,7 +137,7 @@ df -h /ai/workspace / && du -sh /ai/workspace/AIE1903/runs           # 磁盘
 
 | 现象 | 可能原因 | 处理 |
 |---|---|---|
-| `Could not resolve hostname github.com` | DNS 偶发失败 | 重试；或者在征得同意后改用 FQDN（第 5 节） |
+| `Could not resolve hostname github.com` | DNS 偶发失败 | 重试 3–4 次，每次间隔 3 秒（改用 FQDN 实测无效，见第 5 节） |
 | CPU 任务比预期慢很多，`throttled_usec` 猛增 | 线程数超过了 24 核配额 | 按 `configs/runtime.yaml` 设置线程环境变量 |
 | 进程突然消失，`memory.events` 里的 oom 增加 | 超出 32 GiB 内存 | 减小批大小或数据规模，并在 run.json 中记录 |
 | CPU 与 GPU 的结果对不上 | GPU 默认使用 TF32 | 按 training.md §3 显式设置精度 |
