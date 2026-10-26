@@ -155,7 +155,7 @@ backups/
 - **回退办法**：
   - 查看旧状态：`git worktree add /tmp/aie1903-legacy archive/legacy-scaffold`。**不要**在主工作树里检出旧提交，原因见 git-workflow §5.1。
   - 撤销合并：`git revert -m 1 <merge>`，不需要改写历史。
-- **执行中的事故**：合并前我曾在主工作树中切换到旧的 `main`，再合并回来，导致两份取消跟踪的 PDF 被 git 从磁盘删除。`sha256sum -c` 立刻发现了问题；已从 `archive/legacy-scaffold` 恢复，blob 与官方一致，13/13 校验 OK。防范办法已写入 git-workflow §5.1 和 data/README.md 的"恢复"一节。
+- **执行中的事故**：合并前我曾在主工作树中切换到旧的 `main`，再合并回来，导致两份取消跟踪的 PDF 被 git 从磁盘删除。`sha256sum -c` 立刻发现了问题；已从 `archive/legacy-scaffold` 恢复，blob 与官方一致，13/13 校验 OK。防范办法已写入 git-workflow §5.1 和 data/README.md 的"恢复"一节。这次误检出还留下了 3 个只剩 `.!!!*` 的空壳目录（`figures/`、`src/aie1903_project/`、`artifacts/outputs/`），已在最终检查时发现并删除；检测命令也写进了 §5.1。
 - **已由用户决定并完成**：`.cursorignore` 已创建；项目外的 4 个暂存件已删除。
 - **待用户处理的事项**：
   1. 把仓库改为私有，并添加课程人员与组员；

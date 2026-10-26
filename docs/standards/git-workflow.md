@@ -69,7 +69,17 @@ git show archive/legacy-scaffold:src/aie1903_project/metrics.py      # 查看单
 git worktree add /tmp/aie1903-legacy archive/legacy-scaffold          # 完整查看；用完执行 git worktree remove /tmp/aie1903-legacy
 ```
 
-如果已经出了问题：先用 `(cd data && sha256sum -c checksums.sha256)` 找出缺失的文件，再按 `data/README.md` 的"恢复"一节处理。
+如果已经出了问题：
+
+1. 用 `(cd data && sha256sum -c checksums.sha256)` 找出缺失的文件，按 `data/README.md` 的"恢复"一节处理。
+2. 检查有没有留下空壳目录。旧提交里的目录被重建后，存储层会往里面写入 `.!!!*` 文件；git 删除被跟踪的文件后，这些目录不会消失。用下面的命令查找"只剩 `.!!!*`"的目录，确认是误生成的后删除：
+
+```bash
+find . -path ./.git -prune -o -path ./.venv -prune -o -type d -print | while read d; do
+  n=$(find "$d" -mindepth 1 -maxdepth 1 | wc -l); j=$(find "$d" -mindepth 1 -maxdepth 1 -name '.!!!*' | wc -l)
+  [ "$n" -gt 0 ] && [ "$n" -eq "$j" ] && echo "$d"
+done
+```
 
 ## 6. 推送与标签
 
